@@ -1,4 +1,4 @@
 i3lock:
-    i3lock.latest:
+    pkg.latest:
         - refresh: True
 

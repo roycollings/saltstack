@@ -4,3 +4,6 @@ base:
     - vim
     - atom 
     - i3
+    - i3lock
+    - arandr
+    - xfce4-terminal

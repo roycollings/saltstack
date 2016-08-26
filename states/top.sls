@@ -2,4 +2,5 @@ base:
   '*':
     - cmd
     - vim
-    - atom
+    - atom 
+    - i3

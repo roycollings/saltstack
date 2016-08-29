@@ -2,8 +2,9 @@ base:
   '*':
     - cmd
     - vim
-    - atom 
+    - atom
     - i3
     - i3lock
     - arandr
     - xfce4-terminal
+    - tree

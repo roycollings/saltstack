@@ -1,0 +1,9 @@
+{% set user = 'roy' %}
+{% set homeDir = '/home/roy' %}
+{% set statePath = '/salt/states' %}
+
+{% set vars = {
+  'user' : user,
+  'homeDir' : homeDir,
+  'statePath' : homeDir + statePath
+} %}

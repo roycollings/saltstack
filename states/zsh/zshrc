@@ -2,8 +2,6 @@ source ~/.antigen.zsh
 
 alias ls=' ls'
 alias cd=' cd'
-alias ll='ls -lFart'
-alias lsf='ls -aF'
 
 # Useful aliases
 alias dc='docker-compose'
@@ -49,4 +47,4 @@ antigen theme bhilburn/powerlevel9k powerlevel9k
 
 antigen apply
 
-bindkey -v
+. .zshrc.user

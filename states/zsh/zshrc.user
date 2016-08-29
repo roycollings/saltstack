@@ -1,0 +1,4 @@
+bindkey -v
+
+alias ll='ls -lFart'
+alias lsf='ls -aF'

@@ -11,3 +11,4 @@ base:
     - docker
     - zsh
     - feh
+    - thunar

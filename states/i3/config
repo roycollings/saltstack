@@ -30,7 +30,7 @@ font pango:monospace 8
 floating_modifier $mod
 
 # start a terminal
-bindsym $mod+Return exec i3-sensible-terminal
+bindsym $mod+Return exec xfce4-terminal
 
 # kill focused window
 bindsym $mod+Shift+q kill
@@ -116,6 +116,9 @@ bindsym $mod+Shift+8 move container to workspace 8
 bindsym $mod+Shift+9 move container to workspace 9
 bindsym $mod+Shift+0 move container to workspace 10
 
+# Lock the screens
+bindsym Pause exec i3lock --color 000000
+
 # reload the configuration file
 bindsym $mod+Shift+c reload
 # restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
@@ -155,7 +158,5 @@ bar {
         status_command i3status
 }
 
-#
-# ROY config
-#
-bindsym Pause exec i3lock --color 000000
+# Set background color
+exec --no-startup-id xsetroot -solid "#333333"

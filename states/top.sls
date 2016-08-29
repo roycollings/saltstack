@@ -9,3 +9,5 @@ base:
     - xfce4-terminal
     - tree
     - docker
+    - zsh
+    - feh

@@ -8,3 +8,4 @@ base:
     - arandr
     - xfce4-terminal
     - tree
+    - docker

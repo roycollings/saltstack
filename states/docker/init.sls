@@ -6,3 +6,7 @@ docker-install:
 docker-add-to-group:
   cmd.run:
     - name: sudo usermod -aG docker $USER
+
+docker-update-current-group:
+  cmd.run:
+    - name: newgrp docker

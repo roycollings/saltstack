@@ -13,3 +13,5 @@ base:
     - zsh
     - feh
     - thunar
+    - php
+    - composer

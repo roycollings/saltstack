@@ -1,4 +1,3 @@
 feh:
-    pkg.latest:
-        - refresh: True
+    pkg.installed
 

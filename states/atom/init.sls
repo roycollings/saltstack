@@ -9,7 +9,7 @@ atom-ppa:
 atom:
     pkg.installed:
         - require:
-                - pkgrepo: atom-ppa
+            - pkgrepo: atom-ppa
 
 atom-groovy:
     cmd.run:

@@ -7,6 +7,7 @@ php-ppa:
         - keyserver: keyserver.ubuntu.com
 
 php:
-    pkg.latest:
-        - refresh: True
+    pkg.installed:
+        - require:
+            - pkgrepo: php-ppa
 

@@ -1,3 +1,2 @@
 tree:
-    pkg.latest:
-        - refresh: True
+    pkg.installed

@@ -7,6 +7,7 @@ arandr-ppa:
         - keyserver: keyserver.ubuntu.com
 
 arandr:
-    pkg.latest:
-        - refresh: True
+    pkg.installed:
+        - require:
+            - pkgrepo: arandr-ppa
 

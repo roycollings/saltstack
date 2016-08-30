@@ -1,8 +1,7 @@
 {%- from "vars" import vars with context %}
 
 vim:
-    pkg.latest:
-        - refresh: True
+    pkg.installed
 
 vim-vimrc:
   file.managed:

@@ -9,6 +9,7 @@ base:
     - xfce4-terminal
     - tree
     - docker
+    - docker-compose
     - zsh
     - feh
     - thunar

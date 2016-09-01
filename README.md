@@ -1,6 +1,6 @@
 Install saltstack:
 
-get -qO- https://bootstrap.saltstack.com | sudo sh -s -- -P -d git develop
+wget -qO- https://bootstrap.saltstack.com | sudo sh -s -- -P -d git develop
 
 Run saltstack:
 

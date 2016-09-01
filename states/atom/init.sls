@@ -34,3 +34,9 @@ atom-highlight-selected:
         - name: apm install highlight-selected
         - require:
             - pkg: atom
+
+atom-beautify:
+    cmd.run:
+        - name: apm install atom-beautify
+        - require:
+            - pkg: atom

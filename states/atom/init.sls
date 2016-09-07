@@ -1,3 +1,5 @@
+{%- from "vars" import vars with context %}
+
 atom-ppa:
     pkgrepo.managed:
         - humanname: Atom PPA
@@ -10,6 +12,8 @@ atom:
     pkg.installed:
         - require:
             - pkgrepo: atom-ppa
+    cmd.run:
+        - name: chown -R {{ vars.user }}:{{ vars.user }} ~/.atom
 
 atom-groovy:
     cmd.run:

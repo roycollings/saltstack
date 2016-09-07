@@ -16,3 +16,4 @@ base:
     - php
     - composer
     - htop
+    - xterm

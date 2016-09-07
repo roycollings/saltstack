@@ -5,3 +5,4 @@ XTerm*saveLines: 10000
 XTerm*color4: rgb:6c/85/db
 XTerm*color12: rgb:6c/8e/ff
 XTerm*allowBoldFonts: false
+XTerm*selectToClipboard: true

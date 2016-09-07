@@ -47,8 +47,8 @@ set incsearch		" Incremental search
 "set hidden		" Hide buffers when they are abandoned
 "set mouse=a		" Enable mouse usage (all modes)
 set tabstop=4 expandtab
-set autoindent
-set nu
+"set autoindent
+"set nu
 
 " Source a global configuration file if available
 if filereadable("/etc/vim/vimrc.local")

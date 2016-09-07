@@ -117,7 +117,7 @@ bindsym $mod+Shift+9 move container to workspace 9
 bindsym $mod+Shift+0 move container to workspace 10
 
 # Lock the screens
-bindsym Pause exec i3lock --color 000000
+bindsym Pause exec xset dpms force off; exec i3lock --color 000000
 
 # reload the configuration file
 bindsym $mod+Shift+c reload
@@ -160,4 +160,4 @@ bar {
 
 # Set background color
 exec --no-startup-id xsetroot -solid "#333333"
-xset dpms 600
+exec --no-startup-id xset dpms 10

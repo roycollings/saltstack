@@ -1,0 +1,7 @@
+XTerm*faceName: Hack-Regular:size=10:antialiasing=false
+XTerm*background: rgb:28/2c/34
+XTerm*foreground: rgb:d4/dd/ea
+XTerm*saveLines: 10000
+XTerm*color4: rgb:6c/85/db
+XTerm*color12: rgb:6c/8e/ff
+XTerm*allowBoldFonts: false

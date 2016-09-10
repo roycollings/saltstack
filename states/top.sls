@@ -1,6 +1,5 @@
 base:
   '*':
-    - cmd
     - vim
     - atom
     - i3
@@ -17,3 +16,5 @@ base:
     - composer
     - htop
     - xterm
+    - volti
+    - git

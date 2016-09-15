@@ -1,0 +1,2 @@
+volti:
+    pkg.installed

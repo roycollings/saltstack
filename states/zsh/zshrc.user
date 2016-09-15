@@ -2,3 +2,4 @@ bindkey -v
 
 alias ll='ls -lFart'
 alias lsf='ls -aF'
+export NO_AT_BRIDGE=1

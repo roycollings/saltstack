@@ -7,8 +7,8 @@ base:
     - arandr
     - xfce4-terminal
     - tree
-    - docker
-    - docker-compose
+    #- docker
+    #- docker-compose
     - zsh
     - feh
     - thunar

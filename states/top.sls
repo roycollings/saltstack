@@ -18,3 +18,4 @@ base:
     - xterm
     - volti
     - git
+    - chrome

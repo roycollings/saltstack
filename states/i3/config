@@ -163,6 +163,13 @@ bar {
         status_command i3status
 }
 
+# Window colors
+# class                 border  backgr. text    indicator
+client.focused          #E3E376 #E3E376 #000000 #E3E376
+client.focused_inactive #333333 #5f676a #ffffff #484e50
+client.unfocused        #333333 #222222 #888888 #292d2e
+client.urgent           #2f343a #900000 #ffffff #900000
+
 # Set background color
 exec --no-startup-id xsetroot -solid "#333333"
 exec --no-startup-id xset dpms 10

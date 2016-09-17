@@ -19,3 +19,5 @@ base:
     - volti
     - git
     - chrome
+    - handy_scripts
+    - xinput

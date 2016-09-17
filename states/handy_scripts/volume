@@ -1,0 +1,5 @@
+#!/bin/bash
+
+vol=${1:-100}
+
+pactl -- set-sink-volume 0 ${vol}%

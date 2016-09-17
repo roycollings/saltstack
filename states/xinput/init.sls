@@ -1,0 +1,2 @@
+xinput:
+    pkg.installed

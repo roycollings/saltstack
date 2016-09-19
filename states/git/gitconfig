@@ -1,0 +1,8 @@
+[user]
+	email = roy.collins@postcodelottery.co.uk
+	name = Roy Collings
+[alias]
+    st = status
+    co = checkout
+[push]
+	default = matching

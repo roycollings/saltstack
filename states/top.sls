@@ -7,8 +7,8 @@ base:
     - arandr
     - xfce4-terminal
     - tree
-    - docker
-    - docker-compose
+    #- docker
+    #- docker-compose
     - zsh
     - feh
     - thunar
@@ -18,4 +18,7 @@ base:
     - xterm
     - volti
     - git
+    - chrome
+    - handy_scripts
+    - xinput
     - scrot

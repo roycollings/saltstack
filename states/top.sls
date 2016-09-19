@@ -21,3 +21,4 @@ base:
     - chrome
     - handy_scripts
     - xinput
+    - scrot

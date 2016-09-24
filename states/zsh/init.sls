@@ -9,6 +9,7 @@ zsh-antigen-clone:
     - rev: master
     - target: /opt/zsh-antigen
     - depth: 1
+    - force_reset: True
   cmd.run:
     - name: curl -L https://raw.githubusercontent.com/zsh-users/antigen/master/antigen.zsh > ~/.antigen.zsh
 

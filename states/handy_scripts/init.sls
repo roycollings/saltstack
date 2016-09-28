@@ -6,6 +6,7 @@ mousespeed:
     - source: salt:///handy_scripts/mousespeed
     - user: {{ vars.user }}
     - group: {{ vars.user }}
+    - makedirs: True
 
 volume:
   file.managed:
@@ -13,4 +14,4 @@ volume:
     - source: salt:///handy_scripts/volume
     - user: {{ vars.user }}
     - group: {{ vars.user }}
-
+    - makedirs: True

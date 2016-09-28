@@ -19,3 +19,4 @@ i3-configuration:
         - source: salt://i3/config
         - user: {{ vars.user }}
         - group: {{ vars.user }}
+        - makedirs: True

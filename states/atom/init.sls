@@ -14,6 +14,8 @@ atom:
             - pkgrepo: atom-ppa
     cmd.run:
         - name: chown -R {{ vars.user }}:{{ vars.user }} ~/.atom
+        - check_cmd:
+            - /bin/false
 
 atom-groovy:
     cmd.run:

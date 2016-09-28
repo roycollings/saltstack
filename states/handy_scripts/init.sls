@@ -17,3 +17,12 @@ volume:
     - group: {{ vars.user }}
     - makedirs: True
     - mode: 744
+
+intellij-dockerised:
+  file.managed:
+    - name: {{ vars.homeDir }}/bin/intellij
+    - source: salt:///handy_scripts/intellij
+    - user: {{ vars.user }}
+    - group: {{ vars.user }}
+    - makedirs: True
+    - mode: 744

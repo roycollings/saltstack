@@ -22,3 +22,4 @@ base:
     - handy_scripts
     - xinput
     - scrot
+    - fonts

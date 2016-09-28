@@ -15,7 +15,7 @@ atom:
     cmd.run:
         - name: chown -R {{ vars.user }}:{{ vars.user }} ~/.atom
         - check_cmd:
-            - /bin/false
+            - /bin/true
 
 atom-groovy:
     cmd.run:

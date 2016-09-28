@@ -7,6 +7,7 @@ mousespeed:
     - user: {{ vars.user }}
     - group: {{ vars.user }}
     - makedirs: True
+    - mode: 744
 
 volume:
   file.managed:
@@ -15,3 +16,4 @@ volume:
     - user: {{ vars.user }}
     - group: {{ vars.user }}
     - makedirs: True
+    - mode: 744

@@ -18,6 +18,15 @@ volume:
     - makedirs: True
     - mode: 744
 
+wifi_restart:
+  file.managed:
+    - name: {{ vars.homeDir }}/bin/wifi_restart
+    - source: salt:///handy_scripts/wifi_restart
+    - user: {{ vars.user }}
+    - group: {{ vars.user }}
+    - makedirs: True
+    - mode: 744
+
 intellij-dockerised:
   file.managed:
     - name: {{ vars.homeDir }}/bin/intellij

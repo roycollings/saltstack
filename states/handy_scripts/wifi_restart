@@ -1,0 +1,48 @@
+#!/usr/bin/env bash
+
+askIt(){
+    ans=""
+    while [ "$ans" = "" ]
+    do
+        printf "Stop? (y/n): "
+        read ans
+    done
+    [ "$ans" = "Y" ] || [ "$ans" = "y" ] && exit
+}
+
+sudo service network-manager restart
+
+askIt
+
+ifconfig wlan0 down
+ifconfig wlan0 up
+
+askIt
+
+nmcli networking off 
+nmcli networking on
+
+askIt
+
+sudo /etc/init.d/network-manager restart
+
+askIt
+
+sudo dhclient -v eth1
+
+askIt
+
+sudo rmmod ipw2100
+sudo modprobe ipw2100
+
+askIt
+
+echo <<!
+
+'Softblock' your wireless device with rfkill block wifi
+rfkill list will show you if you were successful.
+killall nm-applet You kill the network-manager process (panel icon will be gone).
+rfkill unblock wifi Enable wifi again.
+nm-applet Load a new network-manager session.
+!
+

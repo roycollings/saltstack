@@ -1,0 +1,6 @@
+#!/usr/bin/env bash
+
+utserver -settingspath /opt/utorrent-server-alpha-v3_3/ &
+
+printf "\nNow go to http://your-ip-address:8080/gui\n\n"
+

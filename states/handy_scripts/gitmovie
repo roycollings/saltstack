@@ -1,0 +1,29 @@
+#!/usr/bin/env bash
+
+git log \
+--pretty=format:user:%aN%n%at \
+--reverse \
+--raw \
+--encoding=UTF-8 \
+--no-renames \
+--after={500.weeks.ago} \
+> /tmp/git.log
+
+gource \
+    -s .1 \
+    -1280x720 \
+    --auto-skip-seconds .08 \
+    --multi-sampling \
+    --stop-at-end \
+    --key \
+    --highlight-users \
+    --hide mouse,progress \
+    --file-idle-time 0 \
+    --max-files 0  \
+    --background-colour 000000 \
+    --font-size 22 \
+    --title "test project" \
+    --output-ppm-stream - \
+    --output-framerate 30 \
+    /tmp/git.log \
+    | avconv -y -r 30 -f image2pipe -vcodec ppm -i - -b 65536K /tmp/movie.mp4

@@ -1,4 +1,8 @@
 #!/usr/bin/env bash
+#
+# crontab :
+# 0,10,20,30,40,50 * * * * /usr/bin/battery_warning
+
 
 CHG=$(acpi -b | sed -e "s/^.* \([^ ]*\)%.*$/\1/")
 

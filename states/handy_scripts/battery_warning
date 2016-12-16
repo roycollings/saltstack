@@ -1,0 +1,8 @@
+#!/usr/bin/env bash
+
+CHG=$(acpi -b | sed -e "s/^.* \([^ ]*\)%.*$/\1/")
+
+if [ $CHG -lt 55 ]
+then
+    DISPLAY=:0.0 /usr/bin/notify-send -u critical "battery low ($CHG%)!" "\n$(acpi -b)"
+fi

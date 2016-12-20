@@ -6,7 +6,7 @@ git log \
 --raw \
 --encoding=UTF-8 \
 --no-renames \
---after={500.weeks.ago} \
+--after={52.weeks.ago} \
 > /tmp/git.log
 
 gource \

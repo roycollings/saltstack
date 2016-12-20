@@ -1,0 +1,9 @@
+#!/usr/bin/env bash
+
+[ "$2" = "" ] && component="" || component="$2 "
+
+printf "Waiting for docker ${component}logs to contain \"$1\" ... "
+
+grep -m 1 "$1" >/dev/null 2>&1 <(docker-compose -f docker-compose.yml logs -f $component 2>/dev/null)
+
+printf "found!\n"

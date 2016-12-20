@@ -1,0 +1,6 @@
+#!/bin/bash
+
+docker images -f "dangling=true" -q | while read image
+do
+	docker rmi $image
+done

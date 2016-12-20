@@ -1,0 +1,13 @@
+#!/usr/bin/env bash
+
+cd ~/projects
+
+ls | while read dir
+do
+    [ ! -d $dir ] && continue
+    
+    cd $dir
+    x=$(git status -s | wc -l)
+    [ $x -gt 0 ] && echo "$dir ($x items)"
+    cd - > /dev/null
+done

@@ -1,0 +1,32 @@
+#!/usr/bin/env bash
+#
+# This follows the instructions given here https://github.com/Valloric/YouCompleteMe#ubuntu-linux-x64
+
+sudo apt-get install build-essential cmake
+sudo apt-get install python-dev python3-dev
+
+# Mono for c#
+sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys 3FA7E0328081BFF6A14DA29AA6A19B38D3D831EF
+echo "deb http://download.mono-project.com/repo/debian wheezy main" | sudo tee /etc/apt/sources.list.d/mono-xamarin.list
+sudo apt-get update
+sudo apt-get install mono-complete
+
+# Nodejs
+printf "\nGo to https://docs.npmjs.com/getting-started/installing-node and download / install node + update npm...\n\n"
+
+ans=""
+while [ "$ans" != "y" ] && [ "$ans" != "n" ]
+do
+    printf "Type 'y' and press ENTER when you've done that (or 'n' to skip): "
+    read ans
+done
+
+npm install -g typescript
+
+# Not sure if this should be before everything or after...
+vim +PluginInstall +qall
+
+cd ~/.vim/bundle/YouCompleteMe
+./install.py --all
+
+

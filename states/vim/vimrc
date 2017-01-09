@@ -104,7 +104,8 @@ else
 
 "call togglebg#map("<F5>")
 
-let NERDTreeIgnore=['\.pyc$', '\~$'] "ignore files in NERDTree
+let NERDTreeIgnore=['\.pyc$', '\~$'] "ignore cmopiledfiles in NERDTree
+map <C-n> :NERDTreeToggle<CR>
 
 set nu
 

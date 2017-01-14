@@ -1,0 +1,16 @@
+#!/usr/bin/env bash
+
+# Make sure the files are in the right order
+mkdir renamed
+counter=1
+ls -1tr *.JPG | while read filename
+do 
+    cp $filename renamed/$(printf %05d $counter)_$filename
+    ((counter++))
+done
+
+cd renamed
+
+# Change -r 25 to define the frame rate. 25 here means 25 fps.
+ffmpeg -r 25 -pattern_type glob -i '*.JPG' -c:v copy timelapse_movie.avi 
+

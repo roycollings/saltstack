@@ -1,4 +1,11 @@
 #!/usr/bin/env bash
+ #
+# > chown root.root <script>
+# > chmod 4755 <script>    
+# > sudo visudo
+# ... 
+#  Cmnd_Alias        CMD1 = <script with full path>
+#  <username> ALL=NOPASSWD: CMD1
 
 askIt(){
     ans=""
@@ -10,8 +17,16 @@ askIt(){
     [ "$ans" = "Y" ] || [ "$ans" = "y" ] && exit
 }
 
-sudo service network-manager restart
+if [ "$(whoami)" != "root" ]
+then
+        sudo ./$0
+        exit $?
+fi
 
+#sudo service network-manager restart
+service network-manager restart
+
+printf "\n\nNot asking any more since this, so far, has always been enough to fix the wifi.\n\n"; exit 0
 askIt
 
 ifconfig wlan0 down

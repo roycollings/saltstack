@@ -1,0 +1,17 @@
+#!/usr/bin/env bash
+#
+# > chown root.root <script>
+# > chmod 4755 <script>
+# > sudo visudo
+# ... 
+#  Cmnd_Alias        CMD1 = <script with full path>
+#  <username> ALL=NOPASSWD: CMD1
+
+
+if [ "$(whoami)" != "root" ]
+then
+    sudo $0 $1
+    exit $?
+fi
+
+ss -lptn "sport = :$1"

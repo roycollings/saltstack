@@ -8,15 +8,6 @@ atom-ppa:
         - keyid: EEA14886
         - keyserver: keyserver.ubuntu.com
 
-atom:
-    pkg.installed:
-        - require:
-            - pkgrepo: atom-ppa
-    cmd.run:
-        - name: chown -R {{ vars.user }}:{{ vars.user }} ~/.atom
-        - check_cmd:
-            - /bin/true
-
 atom-groovy:
     cmd.run:
         - name: apm install language-groovy
@@ -40,3 +31,12 @@ atom-highlight-selected:
         - name: apm install highlight-selected
         - require:
             - pkg: atom
+
+atom:
+    pkg.installed:
+        - require:
+            - pkgrepo: atom-ppa
+    cmd.run:
+        - name: chown -R {{ vars.user }}:{{ vars.user }} ~/.atom
+        - check_cmd:
+            - /bin/true

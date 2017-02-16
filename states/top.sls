@@ -23,3 +23,4 @@ base:
     - xinput
     - scrot
     - fonts
+    - visualStudioCode

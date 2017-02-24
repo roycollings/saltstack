@@ -15,22 +15,23 @@ call vundle#begin()
 " alternatively, pass a path where Vundle should install plugins
 "call vundle#begin('~/some/path/here')
 
+" Add all your plugins here (note older versions of Vundle used Bundle instead of Plugin)
 " let Vundle manage Vundle, required
 Plugin 'gmarik/Vundle.vim'
-
-" Add all your plugins here (note older versions of Vundle used Bundle instead of Plugin)
-Plugin 'tmhedberg/SimplyFold.vim'
-Plugin 'vim-scripts/indentpython.vim'
+Bundle 'Valloric/YouCompleteMe'
+"Plugin 'tmhedberg/SimplyFold.vim'
+"Plugin 'vim-scripts/indentpython.vim'
 Plugin 'scrooloose/syntastic'
 Plugin 'nvie/vim-flake8'
 Plugin 'scrooloose/nerdtree'
 Plugin 'jistr/vim-nerdtree-tabs'
 Plugin 'kien/ctrlp.vim'
+Plugin 'pangloss/vim-javascript'
 Plugin 'Lokaltog/powerline', {'rtp': 'powerline/bindings/vim/'}
-
 " color schemes
 Plugin 'jnurmine/Zenburn'
 Plugin 'altercation/vim-colors-solarized'
+Plugin 'flazz/vim-colorschemes'
 
 
 " All of your Plugins must be added before the following line
@@ -53,7 +54,10 @@ nnoremap <C-H> <C-W><C-H>
 set foldmethod=indent
 set foldlevel=99
 " Enable folding with the spacebar
-nnoremap <space> za
+"nnoremap <space> za
+
+"Goto def
+nnoremap <C-]> :TernDef<CR>
 
 " PEP8 indentation standards
 au BufNewFile,BufRead *.py
@@ -78,7 +82,7 @@ au BufRead,BufNewFile *.py,*.pyw,*.c,*.h match BadWhitespace /\s\+$/
 
 set encoding=utf-8
 
-Bundle 'Valloric/YouCompleteMe'
+" YouCompleteMe config
 let g:ycm_autoclose_preview_window_after_completion=1
 map <leader>g  :YcmCompleter GoToDefinitionElseDeclaration<CR>
 
@@ -95,12 +99,13 @@ map <leader>g  :YcmCompleter GoToDefinitionElseDeclaration<CR>
 let python_highlight_all=1
 syntax on
 
-if has('gui_running')
-    set background=dark
-    colorscheme solarized
-else
-    colorscheme zenburn
-    endif
+"if has('gui_running')
+"    set background=dark
+"    colorscheme solarized
+"else
+"    colorscheme zenburn
+"endif
+colorscheme zenburn
 
 "call togglebg#map("<F5>")
 
@@ -110,6 +115,8 @@ map <C-n> :NERDTreeToggle<CR>
 set nu
 
 autocmd vimenter * NERDTree
+
+
 
 
 
@@ -167,4 +174,14 @@ set shiftwidth=4
 if filereadable("/etc/vim/vimrc.local")
   source /etc/vim/vimrc.local
 endif
+
+
+execute pathogen#infect()
+call pathogen#helptags()
+
+"TERN
+"enable keyboard shortcuts
+let g:tern_map_keys=1
+"show argument hints
+let g:tern_show_argument_hints='on_hold'
 

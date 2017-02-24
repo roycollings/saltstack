@@ -1,0 +1,20 @@
+#!/usr/bin/env bash
+
+# apt-vim
+git clone https://github.com/egalpin/apt-vim.git /tmp
+cd /tmp/apt-vim
+./apt-vim init
+echo "export PATH=$PATH:~/.vimpkg/bin" >> ~/.zshrc.user
+source ~/.zshrc.user
+apt-vim install -y
+
+# tern
+localTernDir=~/.vim/bundle/tern-for-vim
+apt-vim install -y https://github.com/ternjs/tern_for_vim.git ${localTernDir}
+cd ${localTernDir}
+npm install
+
+# YouCompleteMe
+cd ~/.vim/bundle/YouCompleteMe
+./install.py --tern-completer
+./install.py --all

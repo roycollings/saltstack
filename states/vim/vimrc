@@ -55,6 +55,7 @@ nnoremap <C-K> <C-W><C-K>
 nnoremap <C-L> <C-W><C-L>
 nnoremap <C-H> <C-W><C-H>
 nnoremap <C-]> :TernDef<CR>
+nnoremap <C-A-F> :CtrlP  
 
 " PEP8 indentation standards
 au BufNewFile,BufRead *.py

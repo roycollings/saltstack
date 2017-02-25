@@ -1,0 +1,19 @@
+" YouCompleteMe config
+let g:ycm_autoclose_preview_window_after_completion=1
+map <leader>g  :YcmCompleter GoToDefinitionElseDeclaration<CR>
+
+colorscheme zenburn
+
+let NERDTreeIgnore=['\.pyc$', '\~$'] "ignore cmopiledfiles in NERDTree
+map <C-n> :NERDTreeToggle<CR>
+autocmd vimenter * NERDTree
+
+execute pathogen#infect()
+call pathogen#helptags()
+
+"TERN
+"enable keyboard shortcuts
+let g:tern_map_keys=1
+"show argument hints
+let g:tern_show_argument_hints='on_hold'
+

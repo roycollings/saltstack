@@ -1,7 +1,17 @@
 #!/usr/bin/env bash
 
+# vundle
+rm -rf ~/.vim/bundle/Vundle.vim 2>/dev/null
+git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
+cd ~/.vim/bundle/Vundle.vim
+git submodule update --init --recursive
+
+# Install deps
+vim -i NONE -c VundleUpdate -c quitall
+
 # apt-vim
-git clone https://github.com/egalpin/apt-vim.git /tmp
+rm -rf /tmp/apt-vim 2> /dev/null
+git clone https://github.com/egalpin/apt-vim.git /tmp/apt-vim
 cd /tmp/apt-vim
 ./apt-vim init
 echo "export PATH=$PATH:~/.vimpkg/bin" >> ~/.zshrc.user
@@ -9,12 +19,9 @@ source ~/.zshrc.user
 apt-vim install -y
 
 # tern
-localTernDir=~/.vim/bundle/tern-for-vim
-apt-vim install -y https://github.com/ternjs/tern_for_vim.git ${localTernDir}
-cd ${localTernDir}
+cd ~/.vim/bundle
+apt-vim install -y https://github.com/ternjs/tern_for_vim.git
+cd ~/.vim/bundle/tern_for_vim
 npm install
 
-# YouCompleteMe
-cd ~/.vim/bundle/YouCompleteMe
-./install.py --tern-completer
-./install.py --all
+cat /tmp/bundle-configs >> ~/.vimrc

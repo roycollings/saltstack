@@ -24,4 +24,8 @@ apt-vim install -y https://github.com/ternjs/tern_for_vim.git
 cd ~/.vim/bundle/tern_for_vim
 npm install
 
+# dbext
+cd ~/.vim/bundle
+git clone https://github.com/vim-scripts/dbext.vim
+
 cat /tmp/bundle-configs >> ~/.vimrc

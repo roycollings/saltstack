@@ -31,6 +31,13 @@ vim-install-dependencies:
     - group: {{ vars.user }}
     - shell: /bin/bash
 
+vim-dbext-config
+  file.managed:
+    - name: {{ vars.homeDir }}/.vim/dbext-config
+    - source: salt:///vim/dbext-config
+    - user: {{ vars.user }}
+    - group: {{ vars.user }}
+
 vim-bundle-configs:
   file.managed:
     - name: /tmp/bundle-configs

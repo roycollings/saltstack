@@ -1,0 +1,59 @@
+" dbext
+" " Execute code in normal or visual mode. (s)ql (e)xecute
+" \se
+"
+" " Execute just the current line. (s)ql (e)xecute (l)ine
+" \sel
+" " Select from table (s)ql (t)able
+" " Place cursor over table name, or visual mode select schema & table name
+" \st
+"
+" " Select from table, prompt for number of rows to return  (s)ql (T)able
+" " Place cursor over table name, or visual mode select schema & table name
+" \sT
+"
+" " Select from table, prompt for WHERE clause  (s)ql (t)able (w)here
+" " Place cursor over table name, or visual mode select schema & table name
+" \stw
+" " Describe table (s)ql (d)escribe (t)able
+" " Place cursor over table name, or visual mode select schema & table name
+" \sdt
+"
+" " Describe procedure (s)ql (d)escribe (p)rocedure
+" " Place cursor over procedure name, or visual mode select schema & procedure
+" name
+" \sdp
+"
+" " Describe procedure (s)ql (d)escribe (v)iew
+" " Place cursor over view name, or visual mode select schema & view name
+" \sdv
+" " List tables in database (s)ql (l)ist (t)able
+" " Prompts for string to match tables by name
+" \slt
+"
+" " Same but for procedures
+" \slp
+"
+" " Same but for views
+" \slv
+"
+" " Get list of table columns in paste buffer (s)ql (l)ist (c)olumns
+" " Place cursor over table name. Recognises schemas without visual mode
+" selection
+" " Prompts for alias prefix to be added
+" \slc
+" " Re-run query that generated current results buffer
+" R
+"
+" " Close results buffer
+" q
+" " List recently executed statements 
+" " Press RETURN key on selected statement to re-execute
+" \sh
+
+" Each profile has the form:
+" g:dbext_default_profile_'profilename' = 'var=value:var=value:...'
+let g:dbext_default_profile_psql = 'type=MYSQL:host=localhost:port=3306:dbname=mysql:user=root:passwd=password123'
+let g:dbext_default_profile = 'psql'
+
+autocm VimEnter * DBCompleteTables

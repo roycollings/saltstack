@@ -4,6 +4,7 @@ source ~/.vim/dbext-config
 let g:ycm_autoclose_preview_window_after_completion=1
 map <leader>g  :YcmCompleter GoToDefinitionElseDeclaration<CR>
 
+let g:zenburn_disable_Label_underline = 1
 colorscheme zenburn
 
 let NERDTreeIgnore=['\.pyc$', '\~$'] "ignore cmopiledfiles in NERDTree

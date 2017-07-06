@@ -41,11 +41,20 @@ antigen bundle git-flow
 POWERLEVEL9K_SHORTEN_DIR_LENGTH=2
 POWERLEVEL9K_SHORTEN_STRATEGY="truncate_middle"
 
-POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(dir vcs)
-POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(load time)
+POWERLEVEL9K_NODE_VERSION_BACKGROUND='000'
+POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(dir vcs node_version)
+POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(time)
 
 antigen theme bhilburn/powerlevel9k powerlevel9k
+#antigen theme agnoster/agnoster-zsh-theme agnoster-zsh-theme
 
 antigen apply
 
 . ~/.zshrc.user
+
+export PATH=/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/Users/roycollings/bin:/Users/roycollings/.vimpkg/bin
+
+export PATH=/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/Users/roycollings/bin:/Users/roycollings/.vimpkg/bin:/Users/roycollings/.vimpkg/bin
+
+export NVM_DIR="$HOME/.nvm"
+. "/usr/local/opt/nvm/nvm.sh"

@@ -28,4 +28,4 @@ zsh-zshrc.user:
 
 zsh-set-default-shell:
         cmd.run:
-            - name: chsh -s /usr/bin/zsh
+            - name: chsh -s /bin/zsh

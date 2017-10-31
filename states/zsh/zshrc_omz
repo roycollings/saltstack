@@ -1,5 +1,3 @@
-# TO INSTALL OMZ: https://github.com/robbyrussell/oh-my-zsh
-#
 # If you come from bash you might have to change your $PATH.
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 
@@ -10,7 +8,21 @@ export ZSH=/Users/roycollings/.oh-my-zsh
 # it'll load a random theme each time that oh-my-zsh is loaded.
 # See https://github.com/robbyrussell/oh-my-zsh/wiki/Themes
 #ZSH_THEME="robbyrussell"
-ZSH_THEME="afowler"
+#ZSH_THEME="afowler"
+#ZSH_THEME="agnoster"
+
+POWERLEVEL9K_SHORTEN_DIR_LENGTH=2
+POWERLEVEL9K_SHORTEN_STRATEGY="truncate_middle"
+POWERLEVEL9K_DIR_HOME_BACKGROUND='111'
+POWERLEVEL9K_DIR_HOME_SUBFOLDER_BACKGROUND='117'
+POWERLEVEL9K_DIR_DEFAULT_BACKGROUND='009'
+POWERLEVEL9K_VCS_CLEAN_BACKGROUND='010'
+POWERLEVEL9K_VCS_UNTRACKED_BACKGROUND='210'
+POWERLEVEL9K_VCS_MODIFIED_BACKGROUND='216'
+POWERLEVEL9K_TIME_BACKGROUND='243'
+POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(dir vcs)
+POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(time)
+ZSH_THEME="powerlevel9k/powerlevel9k"
 
 # Uncomment the following line to use case-sensitive completion.
 # CASE_SENSITIVE="true"

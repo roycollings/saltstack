@@ -1,0 +1,6 @@
+#!/usr/bin/env bash
+
+#unset XDG_CURRENT_DESKTOP 
+#unity-control-center
+
+env XDG_CURRENT_DESKTOP=GNOME gnome-control-center

@@ -52,9 +52,7 @@ antigen apply
 
 . ~/.zshrc.user
 
-export PATH=/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/Users/roycollings/bin:/Users/roycollings/.vimpkg/bin
-
-export PATH=/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/Users/roycollings/bin:/Users/roycollings/.vimpkg/bin:/Users/roycollings/.vimpkg/bin
+export PATH=/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:$HOME/bin:$HOME/.vimpkg/bin
 
 export NVM_DIR="$HOME/.nvm"
 . "/usr/local/opt/nvm/nvm.sh"

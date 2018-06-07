@@ -1,0 +1,5 @@
+#!/usr/bin/env zsh
+
+wifiInterface=${1:-"Orange-E165"}
+
+nmcli c up $wifiInterface

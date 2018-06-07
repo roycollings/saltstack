@@ -1,8 +1,9 @@
 [user]
-	email = roy.collins@postcodelottery.co.uk
-	name = Roy Collings
+    email = roy.collings@gmail.com
+    name = Roy Collings
+[push]
+    default = simple
 [alias]
     st = status
     co = checkout
-[push]
-	default = matching
+    ls = log --graph --decorate --oneline

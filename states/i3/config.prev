@@ -31,8 +31,7 @@ floating_modifier $mod
 
 # start a terminal
 #bindsym $mod+Return exec xfce4-terminal
-bindsym $mod+space exec xterm
-bindsym $mod+Return exec xfce4-terminal
+bindsym $mod+Return exec xterm
 
 # kill focused window
 bindsym $mod+Shift+q kill
@@ -119,7 +118,7 @@ bindsym $mod+Shift+9 move container to workspace 9
 bindsym $mod+Shift+0 move container to workspace 10
 
 # Lock the screens
-bindsym $mod+Escape exec xset dpms force off; exec i3lock --color 000000
+bindsym Pause exec xset dpms force off; exec i3lock --color 000000
 
 # Brightness
 bindsym XF86MonBrightnessUp exec --no-startup-id sudo /home/roy/bin/bright_up

@@ -1,0 +1,3 @@
+#!/usr/bin/zsh
+mac=${1:?"Syntax: $0 <mac address>"}
+sudo bt-audio -c $mac

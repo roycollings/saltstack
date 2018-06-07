@@ -1,0 +1,6 @@
+#!/usr/bin/env zsh
+service bluetooth restart
+
+printf "Hit ENTER to open blueman-manager..."
+read ans
+blueman-manager

@@ -43,7 +43,7 @@ POWERLEVEL9K_SHORTEN_STRATEGY="truncate_middle"
 
 POWERLEVEL9K_NODE_VERSION_BACKGROUND='000'
 POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(dir vcs node_version)
-POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(time)
+POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(status time)
 
 antigen theme bhilburn/powerlevel9k powerlevel9k
 #antigen theme agnoster/agnoster-zsh-theme agnoster-zsh-theme

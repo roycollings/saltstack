@@ -1,4 +1,4 @@
-#!/usr/bin/env bash
+#!/usr/bin/env zsh
 
 # vundle
 rm -rf ~/.vim/bundle/Vundle.vim 2>/dev/null

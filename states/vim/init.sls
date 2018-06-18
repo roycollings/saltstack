@@ -29,7 +29,7 @@ vim-install-dependencies:
     - source: salt:///vim/install_deps
     - user: {{ vars.user }}
     - group: {{ vars.user }}
-    - shell: /bin/bash
+    - shell: /bin/zsh
 
 vim-dbext-config
   file.managed:

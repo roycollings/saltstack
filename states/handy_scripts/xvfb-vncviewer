@@ -1,0 +1,6 @@
+#!/usr/bin/env zsh
+
+Xvfb :99 &
+
+x11vnc -display :99 -localhost &
+vncviewer :0

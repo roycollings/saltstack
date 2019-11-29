@@ -1,0 +1,4 @@
+#!/usr/bin/env zsh
+
+sudo Xvfb :99 -nolisten tcp -fbdir /var/run
+

@@ -24,3 +24,4 @@ base:
     - scrot
     - fonts
     - visualStudioCode
+    - rofi

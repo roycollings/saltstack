@@ -1,0 +1,2 @@
+rofi:
+    pkg.installed

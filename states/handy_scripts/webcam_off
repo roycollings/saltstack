@@ -1,3 +1,4 @@
 #!/usr/bin/env bash
+sudo fuser -k /dev/video0
 sudo modprobe -r uvcvideo
 

@@ -1,0 +1,64 @@
+#!/usr/bin/env zsh
+
+stepCounter=0
+find . -name '*.feature' | while read fnam
+do
+  x=$(egrep -c "Given|When|Then|And" $fnam)
+  stepCounter=$((stepCounter+x))
+done
+
+exampleSteps=0
+features=0
+scenarios=0
+
+find . -name '*.feature' | while read fnam
+do
+  features=$((features + 1))
+
+  fileLength=$(wc -l $fnam | awk '{print $1}')
+  inOutline=""
+  currLine=0
+
+  cat $fnam | while read line
+  do
+    currLine=$((currLine + 1))
+    if [ $(echo "$line" | grep -c "Scenario Outline") -gt 0 ]
+    then
+      inOutline="y"
+      testCount=0
+      exampleCount=0
+    fi
+    
+    [ "$inOutline" ] && [ $(echo "$line" | egrep -c "Given|When|Then|And") -gt 0 ] && testCount=$((testCount+1))
+
+    [ $(echo "$line" | grep -c "|") -gt 0 ] && exampleCount=$((exampleCount + 1))
+
+    if [ $(echo "$line" | grep -c "Scenario:") -gt 0 ] || [ $currLine -eq $fileLength ]
+    then
+      if [ "$inOutline" ]
+      then
+        # (we already counted these steps once, we just want any 'repeats' from outlines)
+        exampleCount=$((exampleCount-1))
+        thisOutlineCount=$((testCount * exampleCount))
+
+        exampleSteps=$((exampleSteps + thisOutlineCount))
+        scenarios=$((scenarios + testCount))
+      else
+        scenarios=$((scenarios + 1))
+      fi
+
+      inOutline=""
+    fi
+  done
+done
+
+totalCount=$((stepCounter + exampleSteps))
+
+echo """
+(Includes 'scenario outlines')
+
+FEATURES : $features
+SCENARIOS: $scenarios
+STEPS    : $totalCount
+
+"""

@@ -1,0 +1,28 @@
+#!/usr/bin/env zsh
+
+comm=$1
+
+if [ "$comm" = "" ]
+then
+    echo """
+$0 <command>
+
+<command> options are;
+    devices
+    resolution
+"""
+    exit
+fi
+
+devices() {
+    xsetwacom --list devices
+}
+
+resolution() {
+    stylus=$(devices | grep STYLUS | sed -e "s/^.*id: \([0-9]*\).*$/\1/")
+
+    xsetwacom --get $stylus area
+}
+
+eval $1
+

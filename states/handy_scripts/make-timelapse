@@ -1,0 +1,3 @@
+#!/usr/bin/env zsh
+
+ffmpeg -pattern_type glob -i "*.JPG" output.mpeg

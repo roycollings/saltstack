@@ -1,0 +1,3 @@
+#!/usr/bin/env zsh
+
+git rev-list --count HEAD ^master 

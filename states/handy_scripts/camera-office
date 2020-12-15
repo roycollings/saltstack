@@ -1,0 +1,9 @@
+#!/usr/bin/env zsh
+
+camera-set-brightness 180
+camera-set-sharpness 170
+camera-set-saturation 120
+camera-set-control contrast=120
+
+camera-set-control white_balance_temperature_auto=0
+camera-set-control white_balance_temperature=3200

@@ -7,3 +7,5 @@
     st = status
     co = checkout
     ls = log --graph --decorate --oneline
+    cc = rev-list --count HEAD ^master
+    files = diff-tree -r --name-only --no-commit-id

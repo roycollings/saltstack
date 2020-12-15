@@ -1,0 +1,13 @@
+#!/usr/bin/env zsh
+
+echo """
+Just instructions if the blueman manager is not seeing them:
+
+> bluetoothctl
+(not sure if you need these, but ...)
+# scan on
+# devices
+
+(you DO need this one)
+# pair 70:26:05:88:C9:E5 
+"""

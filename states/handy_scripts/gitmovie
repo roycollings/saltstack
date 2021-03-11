@@ -1,16 +1,19 @@
 #!/usr/bin/env bash
 
+WEEKSAGO=52
+SPEED=.1
+
 git log \
 --pretty=format:user:%aN%n%at \
 --reverse \
 --raw \
 --encoding=UTF-8 \
 --no-renames \
---after={52.weeks.ago} \
+--after={$WEEKSAGO.weeks.ago} \
 > /tmp/git.log
 
 gource \
-    -s .1 \
+    -s $SPEED \
     -1280x720 \
     --auto-skip-seconds .08 \
     --multi-sampling \

@@ -1,0 +1,10 @@
+#!/bin/sh
+
+PACTFLOW=${PACTFLOW_URL:?"PACTFLOW_URL not set"}
+PACT_TOKEN=${PACT_TOKEN:?"PACT_TOKEN not set"}
+PROVIDER=${1:?"Syntax: $0 <provider, i.e. 'gi-fr-users'>"}
+
+curl -s -H "Authorization: Bearer $PACT_TOKEN" $PACTFLOW/contracts/provider/$PROVIDER/latest | \
+  jq -r .content | \
+  base64 -D | \
+  egrep "^ */"

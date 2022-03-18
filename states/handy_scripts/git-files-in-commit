@@ -1,0 +1,4 @@
+#!/usr/bin/env zsh
+
+COMMIT=${1:?"Syntax: $0 <commit id>"}
+git diff-tree $COMMIT -r --name-only --no-commit-id

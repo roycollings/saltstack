@@ -1,0 +1,50 @@
+#!/bin/sh
+
+FILE=${1:?"Syntax $0 <filepath> [<branch (default='master')>]"}
+MASTER_FILE=/tmp/MASTER_$(basename $FILE)
+
+ORIGINAL_BRANCH=${2:-"master"}
+CURRENT_BRANCH=$(git branch --show-current)
+
+git checkout -q $ORIGINAL_BRANCH -- $FILE
+if [ -d "./node_modules" ]
+then
+	# JS
+  # (if 'yarn install' was used, then npm might not work)
+  which yarn &>/dev/null
+	[ $? -eq 0 ] && CMD="yarn" || CMD="npm run"
+
+	$CMD prettier --loglevel silent -w $FILE &> /dev/null
+	$CMD eslint --fix $FILE &> /dev/null
+else
+	# Ruby
+	bundle exec rbprettier -q -w $FILE &> /dev/null
+	bundle exec rubocop --fix $FILE &> /dev/null
+fi
+
+cp $FILE $MASTER_FILE
+
+git reset -q $FILE
+git checkout -q $FILE
+
+
+echo """\x1B[1;37m
+----------------------------------------------------------------------------------------------------
+
+  Changes between current and original branch
+  
+  FILE           : $FILE
+  CURRENT BRANCH : $CURRENT_BRANCH
+  ORIGINAL BRANCH: $ORIGINAL_BRANCH
+  
+  '<' = removed
+  '>' = added
+
+----------------------------------------------------------------------------------------------------
+\x1B[0m
+"""
+
+#diff $MASTER_FILE $FILE
+
+# If you use VScode (and have 'code' command), you can use this instead:
+code --diff $MASTER_FILE $FILE

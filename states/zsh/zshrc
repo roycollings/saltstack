@@ -1,42 +1,112 @@
-export TERM="xterm-256color"
-source ~/.antigen.zsh
+source .env
 
-alias ls=' ls'
-alias cd=' cd'
+# If you come from bash you might have to change your $PATH.
+# export PATH=$HOME/bin:/usr/local/bin:$PATH
 
-# Useful aliases
-alias dc='docker-compose'
-alias dps='docker ps --format="table {{{ .ID }}\t{{ .Names }}\t{{ .Image }}\t{{ .Status }}\t{{ .Command }}"'
+# Path to your oh-my-zsh installation.
+export ZSH="/Users/rcolling/.oh-my-zsh"
 
-alias tree='tree -d -I "vendor|cache|log|logs"'
+# Set name of the theme to load --- if set to "random", it will
+# load a random theme each time oh-my-zsh is loaded, in which case,
+# to know which specific one was loaded, run: echo $RANDOM_THEME
+# See https://github.com/robbyrussell/oh-my-zsh/wiki/Themes
+#ZSH_THEME="robbyrussell"
+ZSH_THEME="powerlevel9k/powerlevel9k"
 
-setopt AUTO_PUSHD
-setopt PUSHD_IGNORE_DUPS
+# Set list of themes to pick from when loading at random
+# Setting this variable when ZSH_THEME=random will cause zsh to load
+# a theme from this variable instead of looking in ~/.oh-my-zsh/themes/
+# If set to an empty array, this variable will have no effect.
+# ZSH_THEME_RANDOM_CANDIDATES=( "robbyrussell" "agnoster" )
 
-DIRSTACKSIZE=9
-DIRSTACKFILE=~/.zdirs
-if [[ -f $DIRSTACKFILE ]] && [[ $#dirstack -eq 0 ]]; then
-  dirstack=( ${(f)"$(< $DIRSTACKFILE)"} )
-  [[ -d $dirstack[1] ]] && cd $dirstack[1] && cd $OLDPWD
-fi
-chpwd() {
-  print -l $PWD ${(u)dirstack} >$DIRSTACKFILE
-}
+# Uncomment the following line to use case-sensitive completion.
+# CASE_SENSITIVE="true"
 
-# Remove 0.4 second delay between vi modes and have a 0.1 delay
-export KEYTIMEOUT=1
+# Uncomment the following line to use hyphen-insensitive completion.
+# Case-sensitive completion must be off. _ and - will be interchangeable.
+# HYPHEN_INSENSITIVE="true"
 
-# Antigen
-antigen use oh-my-zsh
+# Uncomment the following line to disable bi-weekly auto-update checks.
+# DISABLE_AUTO_UPDATE="true"
 
-antigen bundle git
-antigen bundle pip
-antigen bundle command-not-found
-antigen bundle zsh-users/zsh-syntax-highlighting
-antigen bundle felixr/docker-zsh-completion
-antigen bundle git-flow
+# Uncomment the following line to automatically update without prompting.
+# DISABLE_UPDATE_PROMPT="true"
 
-#POWERLEVEL9K_MODE='awesome-fontconfig'
+# Uncomment the following line to change how often to auto-update (in days).
+# export UPDATE_ZSH_DAYS=13
+
+# Uncomment the following line if pasting URLs and other text is messed up.
+# DISABLE_MAGIC_FUNCTIONS=true
+
+# Uncomment the following line to disable colors in ls.
+# DISABLE_LS_COLORS="true"
+
+# Uncomment the following line to disable auto-setting terminal title.
+# DISABLE_AUTO_TITLE="true"
+
+# Uncomment the following line to enable command auto-correction.
+# ENABLE_CORRECTION="true"
+
+# Uncomment the following line to display red dots whilst waiting for completion.
+# COMPLETION_WAITING_DOTS="true"
+
+# Uncomment the following line if you want to disable marking untracked files
+# under VCS as dirty. This makes repository status check for large repositories
+# much, much faster.
+# DISABLE_UNTRACKED_FILES_DIRTY="true"
+
+# Uncomment the following line if you want to change the command execution time
+# stamp shown in the history command output.
+# You can set one of the optional three formats:
+# "mm/dd/yyyy"|"dd.mm.yyyy"|"yyyy-mm-dd"
+# or set a custom format using the strftime function format specifications,
+# see 'man strftime' for details.
+# HIST_STAMPS="mm/dd/yyyy"
+
+# Would you like to use another custom folder than $ZSH/custom?
+# ZSH_CUSTOM=/path/to/new-custom-folder
+
+# Which plugins would you like to load?
+# Standard plugins can be found in ~/.oh-my-zsh/plugins/*
+# Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
+# Example format: plugins=(rails git textmate ruby lighthouse)
+# Add wisely, as too many plugins slow down shell startup.
+plugins=(git)
+
+source $ZSH/oh-my-zsh.sh
+
+# User configuration
+
+# export MANPATH="/usr/local/man:$MANPATH"
+
+# You may need to manually set your language environment
+# export LANG=en_US.UTF-8
+
+# Preferred editor for local and remote sessions
+# if [[ -n $SSH_CONNECTION ]]; then
+#   export EDITOR='vim'
+# else
+#   export EDITOR='mvim'
+# fi
+
+# Compilation flags
+# export ARCHFLAGS="-arch x86_64"
+
+# Set personal aliases, overriding those provided by oh-my-zsh libs,
+# plugins, and themes. Aliases can be placed here, though oh-my-zsh
+# users are encouraged to define aliases within the ZSH_CUSTOM folder.
+# For a full list of active aliases, run `alias`.
+#
+# Example aliases
+# alias zshconfig="mate ~/.zshrc"
+# alias ohmyzsh="mate ~/.oh-my-zsh"
+
+bindkey -v
+
+alias lsf='ls -Fart'
+alias ll='ls -lFart'
+
+source /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
 POWERLEVEL9K_SHORTEN_DIR_LENGTH=2
 POWERLEVEL9K_SHORTEN_STRATEGY="truncate_middle"
@@ -46,17 +116,32 @@ POWERLEVEL9K_NODE_VERSION_FOREGROUND='green'
 POWERLEVEL9K_RVM_BACKGROUND="black"
 POWERLEVEL9K_RVM_FOREGROUND="pink3"
 
-POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(dir vcs node_version rvm)
-POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(status time)
+POWERLEVEL9K_CUSTOM_PYENV="echo \$(python -c 'import sys; print(\".\".join(map(str, sys.version_info[:2])))')"
 
-antigen theme bhilburn/powerlevel9k powerlevel9k
-#antigen theme agnoster/agnoster-zsh-theme agnoster-zsh-theme
+POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(dir vcs node_version rvm custom_pyenv)
+POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(time status)
 
-antigen apply
-
-. ~/.zshrc.user
-
-export PATH=/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:$HOME/bin:$HOME/.vimpkg/bin
+export PATH=$PATH:/usr/local/bin:$HOME/bin
 
 export NVM_DIR="$HOME/.nvm"
-. "/usr/local/opt/nvm/nvm.sh"
+[ -s "/usr/local/opt/nvm/nvm.sh" ] && . "/usr/local/opt/nvm/nvm.sh"  # This loads nvm
+[ -s "/usr/local/opt/nvm/etc/bash_completion" ] && . "/usr/local/opt/nvm/etc/bash_completion"  # This loads nvm bash_completion
+
+. /Users/rcolling/.nix-profile/etc/profile.d/nix.sh
+
+# Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
+export PATH="$PATH:$HOME/.rvm/bin"
+
+#THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
+export SDKMAN_DIR="/Users/rcolling/.sdkman"
+[[ -s "/Users/rcolling/.sdkman/bin/sdkman-init.sh" ]] && source "/Users/rcolling/.sdkman/bin/sdkman-init.sh"
+
+function awsprofile  {
+    unset AWS_PROFILE
+    aws_profile=$(aws configure list-profiles | fzf --header "AWS profile")
+    if ! aws --profile "$aws_profile" sts get-caller-identity > /dev/null 2>&1; then
+        gimme-aws-creds --profile "$aws_profile"
+    fi
+    export AWS_PROFILE="$aws_profile"
+    aws sts get-caller-identity
+}

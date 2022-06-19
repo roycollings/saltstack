@@ -61,7 +61,7 @@ export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"
 
 
-#antigen theme bhilburn/powerlevel9k powerlevel9k
+antigen theme bhilburn/powerlevel9k powerlevel9k
 #antigen theme agnoster/agnoster-zsh-theme agnoster-zsh-theme
 
 antigen apply

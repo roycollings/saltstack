@@ -46,12 +46,12 @@ POWERLEVEL9K_SHORTEN_STRATEGY="truncate_middle"
 # POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(status time)
 POWERLEVEL9K_NODE_VERSION_BACKGROUND='black'
 POWERLEVEL9K_NODE_VERSION_FOREGROUND='green'
-POWERLEVEL9K_CUSTOM_PYENV_BACKGROUND="yellow"
-POWERLEVEL9K_CUSTOM_PYENV_FOREGROUND="black"
+POWERLEVEL9K_CUSTOM_PYENV_BACKGROUND="black"
+POWERLEVEL9K_CUSTOM_PYENV_FOREGROUND="blue"
 
 POWERLEVEL9K_CUSTOM_PYENV="echo \$(python -c 'import sys; print(\".\".join(map(str, sys.version_info[:2])))')"
 
-POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(dir vcs node_version custom_pyenv)
+POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(dir vcs custom_pyenv node_version)
 POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(time status)
 
 export PATH=$PATH:/usr/local/bin:$HOME/bin
@@ -61,7 +61,7 @@ export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"
 
 
-antigen theme bhilburn/powerlevel9k powerlevel9k
+#antigen theme bhilburn/powerlevel9k powerlevel9k
 #antigen theme agnoster/agnoster-zsh-theme agnoster-zsh-theme
 
 antigen apply

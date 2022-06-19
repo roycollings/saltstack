@@ -3,10 +3,12 @@ source ~/.antigen.zsh
 
 alias ls=' ls'
 alias cd=' cd'
+
+# Useful aliases
 alias dc='docker-compose'
 alias dps='docker ps --format="table {{{ .ID }}\t{{ .Names }}\t{{ .Image }}\t{{ .Status }}\t{{ .Command }}"'
+
 alias tree='tree -d -I "vendor|cache|log|logs"'
-alias python python3
 
 setopt AUTO_PUSHD
 setopt PUSHD_IGNORE_DUPS
@@ -44,15 +46,14 @@ POWERLEVEL9K_SHORTEN_STRATEGY="truncate_middle"
 # POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(status time)
 POWERLEVEL9K_NODE_VERSION_BACKGROUND='black'
 POWERLEVEL9K_NODE_VERSION_FOREGROUND='green'
-# POWERLEVEL9K_CUSTOM_PYENV_BACKGROUND="black"
-# POWERLEVEL9K_CUSTOM_PYENV_FOREGROUND="blue"
 POWERLEVEL9K_VIRTUALENV_BACKGROUND="black"
 POWERLEVEL9K_VIRTUALENV_FOREGROUND="blue"
 
-# POWERLEVEL9K_CUSTOM_PYENV="echo \$(python -c 'import sys; print(\".\".join(map(str, sys.version_info[:2])))')"
-# POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(dir vcs custom_pyenv node_version virtualenv)
-
-POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(dir vcs custom_pyenv node_version virtualenv)
+POWERLEVEL9K_CUSTOM_PYENV_BACKGROUND="black"
+POWERLEVEL9K_CUSTOM_PYENV_FOREGROUND="blue"
+POWERLEVEL9K_CUSTOM_PYENV="echo \$(python -c 'import sys; print(\".\".join(map(str, sys.version_info[:2])))')"
+# POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(dir vcs custom_pyenv node_version)
+POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(dir vcs node_version virtualenv)
 POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(time status)
 
 export PATH=$PATH:/usr/local/bin:$HOME/bin

@@ -1,0 +1,12 @@
+#!/usr/bin/env sh
+
+TO=${1:?"Syntax $0 <work|personal>"}
+
+eval "$(ssh-agent -s)"
+
+if [ "$TO" = "work" ]
+then
+	ssh-add -K ~/.ssh/id_rsa
+else
+	ssh-add -K ~/.ssh/id_personal
+fi

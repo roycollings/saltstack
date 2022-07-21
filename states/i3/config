@@ -203,3 +203,9 @@ exec --no-startup-id xinput --set-prop "ETPS/2 Elantech Touchpad" "Device Accel 
 exec --no-startup-id xrdb ~/.Xdefaults
 exec --no-startup-id synclient VertScrollDelta=-108 HorizScrollDelta=-108
 
+# trackpad settings
+TRACKPAD_ID=$(xinput list | grep Touchpad | sed -e "s/^.*id=\([0-9]*\).*$/\1/")
+xinput set-prop $TRACKPAD_ID "libinput Tapping Enabled" 1
+put set-prop $TRACKPAD_ID "libinput Natural Scrolling Enabled" 1
+
+

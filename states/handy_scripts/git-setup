@@ -1,0 +1,5 @@
+# Use 'source' for this
+
+eval "$(ssh-agent -s)"
+ssh-add ~/.ssh/id_personal
+

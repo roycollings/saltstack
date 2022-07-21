@@ -1,0 +1,11 @@
+--2022-07-22 00:04:20--  https://baltocdn.com/i3-window-manager/signing.asc
+Resolving baltocdn.com (baltocdn.com)... 151.139.128.10
+Connecting to baltocdn.com (baltocdn.com)|151.139.128.10|:443... connected.
+HTTP request sent, awaiting response... 200 OK
+Length: 1721 (1,7K) [text/plain]
+Saving to: ‘STDOUT’
+
+-                                                    0%[                                                                                                                ]       0  --.-KB/s               -                                                    0%[                                                                                                                ]       0  --.-KB/s    in 0,001s  
+
+
+Cannot write to ‘-’ (Success).

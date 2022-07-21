@@ -1,6 +1,9 @@
 Install saltstack:
 
-wget -qO- https://bootstrap.saltstack.com | sudo sh -s -- -P -d git develop
+curl -L https://bootstrap.saltstack.com -o bootstrap_salt.sh
+sudo sh bootstrap_salt.sh
+
+edit /etc/sal/minion -> set "file_client: local"
 
 Run saltstack:
 

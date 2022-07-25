@@ -1,12 +1,14 @@
-#!/usr/bin/env sh
+# Use 'source' for this
 
-TO=${1:?"Syntax $0 <work|personal>"}
+ENV=${1:?"Syntax: $0 <work|personal>"}
 
-eval "$(ssh-agent -s)"
-
-if [ "$TO" = "work" ]
+if [ "$ENV" = "personal" ]
 then
-	ssh-add -K ~/.ssh/id_rsa
+	eval "$(ssh-agent -s)"
+	ssh-add ~/.ssh/id_personal
+	cp ~/.gitconfig_personal ~/.gitconfig
 else
-	ssh-add -K ~/.ssh/id_personal
+	eval "$(ssh-agent -s)"
+	ssh-add ~/.ssh/id_work
+	cp ~/.gitconfig_work ~/.gitconfig
 fi

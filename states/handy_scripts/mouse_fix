@@ -1,0 +1,25 @@
+#!/bin/sh
+#xinput list-props 12
+#xinput set-value
+#xinput set-prop 12 336 1
+#xinput set-prop 12 336 0.5
+#xinput set-prop 12 328 1
+#xinput list-props 12
+#xinput set-prop 12 336 0.3
+#xinput set-prop 12 336 0.33
+#xinput set-prop 12 336 0.35
+
+DEVICE_ID=$(xinput list | grep Touchpad | sed -e "s/^.*id=\([0-9]*\).*$/\1/")
+
+set_prop(){
+	PROP=$1
+	VALUE=$2
+
+	prop_id=$(xinput list-props $DEVICE_ID | grep "$PROP (" | sed -e "s/^.*(\([0-9]*\)).*/\1/")
+
+	xinput set-prop $DEVICE_ID $prop_id $VALUE
+	xinput list-props $DEVICE_ID | grep "($prop_id)"
+}
+
+set_prop "Natural Scrolling Enabled" 1
+set_prop "Tapping Enabled" 1

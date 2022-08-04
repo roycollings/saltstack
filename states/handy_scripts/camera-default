@@ -1,0 +1,27 @@
+#!/bin/sh
+
+WEBCAM_CHOICE="webcam"
+LAPTOP_CHOICE="laptop"
+
+SYNTAX="Syntax: $0 <$LAPTOP_CHOICE|$WEBCAM_CHOICE>"
+CAMERA=${1:?$SYNTAX}
+
+
+# Check with 'webcamoid' what the file is for this.
+WEBCAM=/dev/video2
+
+DEFAULT=/dev/video0
+DEFAULT_BACKUP=${DEFAULT}.orig
+
+[ ! -c $DEFAULT_BACKUP ] && sudo mv $DEFAULT $DEFAULT_BACKUP
+
+if [ "$CAMERA" = $DEFAULT ]
+then
+	sudo ln -s $DEFAULT_BACKUP $DEFAULT
+elif [ "$CAMERA" = $WEBCAM ]
+then
+	sudo ln -s $WEBCAM $DEFAULT
+else
+	echo "$SYNTAX"
+	exit 1
+fi

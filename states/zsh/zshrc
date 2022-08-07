@@ -1,10 +1,8 @@
-source .env
-
 # If you come from bash you might have to change your $PATH.
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 
 # Path to your oh-my-zsh installation.
-export ZSH="/Users/rcolling/.oh-my-zsh"
+export ZSH=~/.oh-my-zsh
 
 # Set name of the theme to load --- if set to "random", it will
 # load a random theme each time oh-my-zsh is loaded, in which case,
@@ -106,35 +104,34 @@ bindkey -v
 alias lsf='ls -Fart'
 alias ll='ls -lFart'
 
-source /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+source ~/projects/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
 POWERLEVEL9K_SHORTEN_DIR_LENGTH=2
 POWERLEVEL9K_SHORTEN_STRATEGY="truncate_middle"
 
 POWERLEVEL9K_NODE_VERSION_BACKGROUND='black'
 POWERLEVEL9K_NODE_VERSION_FOREGROUND='green'
-POWERLEVEL9K_RVM_BACKGROUND="black"
-POWERLEVEL9K_RVM_FOREGROUND="pink3"
+POWERLEVEL9K_VIRTUALENV_BACKGROUND="pink3"
+POWERLEVEL9K_VIRTUALENV_FOREGROUND="black"
 
-POWERLEVEL9K_CUSTOM_PYENV="echo \$(python -c 'import sys; print(\".\".join(map(str, sys.version_info[:2])))')"
+POWERLEVEL9K_CUSTOM_PYENV="echo \$(python3 -c 'import sys; print(\".\".join(map(str, sys.version_info[:2])))')"
 
-POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(dir vcs node_version rvm custom_pyenv)
+POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(dir vcs node_version custom_pyenv virtualenv)
 POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(time status)
 
 export PATH=$PATH:/usr/local/bin:$HOME/bin
 
 export NVM_DIR="$HOME/.nvm"
-[ -s "/usr/local/opt/nvm/nvm.sh" ] && . "/usr/local/opt/nvm/nvm.sh"  # This loads nvm
-[ -s "/usr/local/opt/nvm/etc/bash_completion" ] && . "/usr/local/opt/nvm/etc/bash_completion"  # This loads nvm bash_completion
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
-. /Users/rcolling/.nix-profile/etc/profile.d/nix.sh
+
+#export NVM_DIR="$HOME/.nvm"
+#[ -s "/usr/local/opt/nvm/nvm.sh" ] && . "/usr/local/opt/nvm/nvm.sh"  # This loads nvm
+#[ -s "/usr/local/opt/nvm/etc/bash_completion" ] && . "/usr/local/opt/nvm/etc/bash_completion"  # This loads nvm bash_completion
 
 # Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
 export PATH="$PATH:$HOME/.rvm/bin"
-
-#THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
-export SDKMAN_DIR="/Users/rcolling/.sdkman"
-[[ -s "/Users/rcolling/.sdkman/bin/sdkman-init.sh" ]] && source "/Users/rcolling/.sdkman/bin/sdkman-init.sh"
 
 function awsprofile  {
     unset AWS_PROFILE
@@ -145,9 +142,17 @@ function awsprofile  {
     export AWS_PROFILE="$aws_profile"
     aws sts get-caller-identity
 }
-export PYENV_ROOT="$HOME/.pyenv"
-export PATH="$PYENV_ROOT/bin:$PATH"
+
+export PATH="$HOME/.pyenv/bin:$PATH"
 if command -v pyenv 1>/dev/null 2>&1; then
   eval "$(pyenv init --path)"
   eval "$(pyenv init -)"
 fi
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+
+export WORKON_HOME=~/virtualenvs
+export VIRTUAL_ENVWRAPPER_PYTHON=/usr/local/bin/python3
+export LANG=en_US.UTF-8
+export LC_ALL=en_US.UTF-8
+
+~/bin/mouse_fix

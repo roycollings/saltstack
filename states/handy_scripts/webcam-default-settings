@@ -1,0 +1,7 @@
+#!/bin/zsh
+
+v4l2-ctl -d /dev/video2 \
+	-c brightness=200 \
+	-c sharpness=170 \
+	-c saturation=145 \
+	-c power_line_frequency=1

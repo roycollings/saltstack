@@ -19,11 +19,15 @@ do
 	fi
 done
 
-printf "\nCamera device: \"$CAMERA\"\n\n"
+printf "\nCamera device chosen: \"$CAMERA\"\n"
 
 v4l2-ctl -d $CAMERA \
-	-c brightness=200 \
-	-c sharpness=160 \
+	-c brightness=190 \
+	-c sharpness=145 \
 	-c saturation=145 \
-	-c power_line_frequency=1
+	-c power_line_frequency=1 \
+	-c exposure_auto=1 \
+	-c exposure_absolute=128
 
+
+printf "\nSETTINGS:\n$(v4l2-ctl -l)\n\n"

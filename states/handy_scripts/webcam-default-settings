@@ -1,7 +1,29 @@
 #!/bin/zsh
 
-v4l2-ctl -d /dev/video2 \
+printf "\nDEVICES:\n\n$(v4l2-ctl --list-devices)\n\n"
+
+CAMERA=""
+IN_CAMERA=""
+v4l2-ctl --list-devices | while read line
+do
+	if [ $(echo "$line" | grep -c "C920") -gt 0 ]
+	then
+		IN_CAMERA="Y"
+		continue
+	fi
+
+	if [ "$IN_CAMERA" ]
+	then
+		CAMERA="$line"
+		break
+	fi
+done
+
+printf "\nCamera device: \"$CAMERA\"\n\n"
+
+v4l2-ctl -d $CAMERA \
 	-c brightness=200 \
-	-c sharpness=170 \
+	-c sharpness=160 \
 	-c saturation=145 \
 	-c power_line_frequency=1
+

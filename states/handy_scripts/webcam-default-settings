@@ -4,7 +4,7 @@ printf "\nDEVICES:\n\n$(v4l2-ctl --list-devices)\n\n"
 
 CAMERA=""
 IN_CAMERA=""
-v4l2-ctl --list-devices | while read line
+v4l2-ctl --list-devices 2>/dev/null  | while read line
 do
 	if [ $(echo "$line" | grep -c "C920") -gt 0 ]
 	then
@@ -26,8 +26,10 @@ v4l2-ctl -d $CAMERA \
 	-c sharpness=145 \
 	-c saturation=145 \
 	-c power_line_frequency=1 \
-	-c exposure_auto=1 \
-	-c exposure_absolute=128
+	-c exposure_absolute=128 \
+	-c exposure_auto=3 \
+	-c exposure_auto_priority=0 \
+	-c zoom_absolute=110
 
 
-printf "\nSETTINGS:\n$(v4l2-ctl -l)\n\n"
+printf "\nSETTINGS:\n$(v4l2-ctl -d $CAMERA -l)\n\n"

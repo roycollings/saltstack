@@ -1,0 +1,6 @@
+#!/usr/bin/env bash
+
+LAST_MASTER_COMMIT=$(git rev-parse origin/master^{commit})
+LAST_BRANCH_COMMIT=$(git ls | head -1 | awk '{print $2}')
+
+git diff --name-only ${LAST_MASTER_COMMIT}...${LAST_BRANCH_COMMIT} 

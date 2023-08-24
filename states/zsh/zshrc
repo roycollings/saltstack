@@ -1,6 +1,9 @@
 # If you come from bash you might have to change your $PATH.
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 
+POWERLEVEL9K_MODE='awesome-fontconfig'
+ZLE_RPROMPT_INDENT=0
+
 # Path to your oh-my-zsh installation.
 export ZSH=~/.oh-my-zsh
 
@@ -111,12 +114,26 @@ POWERLEVEL9K_SHORTEN_STRATEGY="truncate_middle"
 
 POWERLEVEL9K_NODE_VERSION_BACKGROUND='black'
 POWERLEVEL9K_NODE_VERSION_FOREGROUND='green'
-POWERLEVEL9K_VIRTUALENV_BACKGROUND="pink3"
-POWERLEVEL9K_VIRTUALENV_FOREGROUND="black"
 
-POWERLEVEL9K_CUSTOM_PYENV="echo \$(python3 -c 'import sys; print(\".\".join(map(str, sys.version_info[:2])))')"
+#POWERLEVEL9K_CUSTOM_PYENV="echo \$(python3 -c 'import sys; print(\".\".join(map(str, sys.version_info[:2])))')"
+#POWERLEVEL9K_VIRTUALENV_BACKGROUND="pink3"
+#POWERLEVEL9K_VIRTUALENV_FOREGROUND="black"
+typeset -g POWERLEVEL9K_VIRTUALENV_SHOW_WITH_PYENV=false
+typeset -g POWERLEVEL9K_VIRTUALENV_CONTENT_EXPANSION=
+typeset -g POWERLEVEL9K_VIRTUALENV_GENERIC_NAMES=()
+typeset -g POWERLEVEL9K_VIRTUALENV_VISUAL_IDENTIFIER_EXPANSION='venv'
 
-POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(dir vcs node_version custom_pyenv virtualenv)
+
+POWERLEVEL9K_CUSTOM_ARM64_BACKGROUND="cyan2"
+POWERLEVEL9K_CUSTOM_ARM64_FOREGROUND="black"
+POWERLEVEL9K_CUSTOM_ARM64="echo \$(arch | grep arm64)"
+POWERLEVEL9K_CUSTOM_I386_BACKGROUND="red3"
+POWERLEVEL9K_CUSTOM_I386_FOREGROUND="white"
+POWERLEVEL9K_CUSTOM_I386="echo \$(arch | grep i386)"
+POWERLEVEL9K_CUSTOM_SHLVL="echo $SHLVL"
+
+#POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(dir vcs node_version custom_pyenv virtualenv)
+POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(custom_i386 custom_arm64 custom_shlvl dir vcs node_version virtualenv)
 POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(time status)
 
 export PATH=$PATH:/usr/local/bin:$HOME/bin
@@ -129,6 +146,9 @@ export NVM_DIR="$HOME/.nvm"
 #export NVM_DIR="$HOME/.nvm"
 #[ -s "/usr/local/opt/nvm/nvm.sh" ] && . "/usr/local/opt/nvm/nvm.sh"  # This loads nvm
 #[ -s "/usr/local/opt/nvm/etc/bash_completion" ] && . "/usr/local/opt/nvm/etc/bash_completion"  # This loads nvm bash_completion
+#
+source $(brew --prefix nvm)/nvm.sh
+
 
 # Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
 export PATH="$PATH:$HOME/.rvm/bin"
@@ -150,9 +170,28 @@ if command -v pyenv 1>/dev/null 2>&1; then
 fi
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
-export WORKON_HOME=~/virtualenvs
+#export WORKON_HOME=~/virtualenvs
 export VIRTUAL_ENVWRAPPER_PYTHON=/usr/local/bin/python3
 export LANG=en_US.UTF-8
 export LC_ALL=en_US.UTF-8
 
-~/bin/mouse_fix
+#~/bin/mouse_fix
+#
+
+# pyenv setup
+export PYENV_ROOT="$HOME/.pyenv"
+export PATH="$PYENV_ROOT/bin:$PATH"
+export PATH="$PYENV_ROOT/shims:${PATH}"
+#eval "$(pyenv init -)"
+eval "$(pyenv virtualenv-init -)"
+
+unalias gk
+alias snowsql=/Applications/SnowSQL.app/Contents/MacOS/snowsql
+
+set -o noglob
+
+export PATH="${PATH}:$HOME/go/bin"
+export PATH="/opt/homebrew/opt/node@16/bin:$PATH"
+
+. ~/.argorc
+

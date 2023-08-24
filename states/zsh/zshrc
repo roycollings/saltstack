@@ -133,7 +133,7 @@ POWERLEVEL9K_CUSTOM_I386="echo \$(arch | grep i386)"
 POWERLEVEL9K_CUSTOM_SHLVL="echo $SHLVL"
 
 #POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(dir vcs node_version custom_pyenv virtualenv)
-POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(custom_i386 custom_arm64 custom_shlvl dir vcs node_version virtualenv)
+POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(custom_shlvl custom_i386 custom_arm64 node_version virtualenv dir vcs)
 POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(time status)
 
 export PATH=$PATH:/usr/local/bin:$HOME/bin

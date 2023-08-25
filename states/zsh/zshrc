@@ -125,34 +125,66 @@ typeset -g POWERLEVEL9K_VIRTUALENV_VISUAL_IDENTIFIER_EXPANSION='venv'
 
 POWERLEVEL9K_TIME_ICON=""
 POWERLEVEL9K_NODE_ICON=""
-POWERLEVEL9K_HOME_ICON=""
-POWERLEVEL9K_HOME_SUB_ICON=""
+#POWERLEVEL9K_HOME_ICON=""
+#POWERLEVEL9K_HOME_SUB_ICON=""
 #POWERLEVEL9K_VCS_GIT_ICON=""
 POWERLEVEL9K_VCS_GIT_GITHUB_ICON=""
 
-POWERLEVEL9K_CUSTOM_ARM64_BACKGROUND="cyan2"
-POWERLEVEL9K_CUSTOM_ARM64_FOREGROUND="black"
-POWERLEVEL9K_CUSTOM_ARM64="echo \$(arch | grep arm64)"
-POWERLEVEL9K_CUSTOM_I386_BACKGROUND="red3"
-POWERLEVEL9K_CUSTOM_I386_FOREGROUND="white"
-POWERLEVEL9K_CUSTOM_I386="echo \$(arch | grep i386)"
+PROMPT_BG="grey15"
+PROMPT_BG2="grey19"
+
 POWERLEVEL9K_CUSTOM_SHLVL="echo $SHLVL"
+POWERLEVEL9K_CUSTOM_SHLVL_BACKGROUND="grey11"
+POWERLEVEL9K_CUSTOM_SHLVL_FOREGROUND="lightskyblue1"
+
+POWERLEVEL9K_CUSTOM_ARM64_BACKGROUND="$PROMPT_BG2"
+POWERLEVEL9K_CUSTOM_ARM64_FOREGROUND="cyan2"
+POWERLEVEL9K_CUSTOM_ARM64="echo \$(arch | grep arm64)"
+POWERLEVEL9K_CUSTOM_I386_BACKGROUND="yellow"
+POWERLEVEL9K_CUSTOM_I386="echo \$(arch | grep i386)"
+
+POWERLEVEL9K_NODE_VERSION_BACKGROUND="$PROMPT_BG"
+
+#POWERLEVEL9K_CUSTOM_L0_TEST="echo $(layer0 profile current | egrep 'dev|sbx')"
+#POWERLEVEL9K_CUSTOM_L0_PROD="echo $(layer0 profile current | grep prod)"
+POWERLEVEL9K_CUSTOM_L0_TEST="layer0 profile current | egrep 'dev|sbx'"
+POWERLEVEL9K_CUSTOM_L0_PROD="layer0 profile current | grep 'prod'"
+POWERLEVEL9K_CUSTOM_L0_TEST_BACKGROUND="$PROMPT_BG2"
+POWERLEVEL9K_CUSTOM_L0_TEST_FOREGROUND="plum1"
+POWERLEVEL9K_CUSTOM_L0_PROD_BACKGROUND="red1"
+POWERLEVEL9K_CUSTOM_L0_PROD_FOREGROUND="grey3"
+
+
+PROMPT_DIR_FG="white"
+POWERLEVEL9K_DIR_DEFAULT_BACKGROUND="$PROMPT_BG"
+POWERLEVEL9K_DIR_DEFAULT_FOREGROUND="$PROMPT_DIR_FG"
+POWERLEVEL9K_DIR_DEFAULT_ICON=""
+POWERLEVEL9K_DIR_HOME_BACKGROUND="$PROMPT_BG"
+POWERLEVEL9K_DIR_HOME_FOREGROUND="$PROMPT_DIR_FG"
+POWERLEVEL9K_DIR_HOME_ICON=""
+POWERLEVEL9K_DIR_HOME_SUBFOLDER_BACKGROUND="$PROMPT_BG"
+POWERLEVEL9K_DIR_HOME_SUBFOLDER_FOREGROUND="$PROMPT_DIR_FG"
+POWERLEVEL9K_DIR_HOME_SUBFOLDER_ICON=""
+POWERLEVEL9K_DIR_NOT_WRITEABLE_BACKGROUND="$PROMPT_BG"
+POWERLEVEL9K_DIR_NOT_WRITEABLE_FOREGROUND="$PROMPT_DIR_FG"
+POWERLEVEL9K_DIR_NOT_WRITEABLE_ICON=""
+POWERLEVEL9K_DIR_ETC_BACKGROUND="$PROMPT_BG"
+POWERLEVEL9K_DIR_ETC_FOREGROUND="$PROMPT_DIR_FG"
+POWERLEVEL9K_DIR_ETC_ICON=""
 
 #POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(dir vcs node_version custom_pyenv virtualenv)
-POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(custom_shlvl custom_i386 custom_arm64 node_version virtualenv dir vcs)
+POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(custom_shlvl custom_i386 node_version virtualenv custom_l0_prod custom_l0_test dir vcs)
 POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(time status)
 
 export PATH=$PATH:/usr/local/bin:$HOME/bin
 
-export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
-
-
 #export NVM_DIR="$HOME/.nvm"
-#[ -s "/usr/local/opt/nvm/nvm.sh" ] && . "/usr/local/opt/nvm/nvm.sh"  # This loads nvm
-#[ -s "/usr/local/opt/nvm/etc/bash_completion" ] && . "/usr/local/opt/nvm/etc/bash_completion"  # This loads nvm bash_completion
-#
+#[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+#[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+export NVM_DIR="$HOME/.nvm"
+    [ -s "$(brew --prefix)/opt/nvm/nvm.sh" ] && . "$(brew --prefix)/opt/nvm/nvm.sh" # This loads nvm
+    [ -s "$(brew --prefix)/opt/nvm/etc/bash_completion.d/nvm" ] && . "$(brew --prefix)/opt/nvm/etc/bash_completion.d/nvm" # This loads nvm bash_completion
+
 source $(brew --prefix nvm)/nvm.sh
 
 
@@ -201,3 +233,4 @@ export PATH="/opt/homebrew/opt/node@16/bin:$PATH"
 
 . ~/.argorc
 
+#alias layer0=". ~/bin/l0"

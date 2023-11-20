@@ -1,0 +1,10 @@
+#!/usr/bin/env bash
+
+find tests | while read TESTFOLDER
+do
+  [ -d "$TESTFOLDER" ] || continue
+
+  TESTCOUNT=$(ls $TESTFOLDER/*.test.js 2> /dev/null | wc -l | awk '{print $1}')
+
+  [ $TESTCOUNT -gt 0 ] && echo "$TESTFOLDER ($TESTCOUNT)"
+done

@@ -30,9 +30,11 @@
   [[ $ZSH_VERSION == (5.<1->*|<6->.*) ]] || return
 
   # The list of segments shown on the left. Fill it with the most important segments.
+  # node_version
   typeset -g POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(
     shlvl
-    node_version
+    k8s_ctxt
+    k8s_ns
     gk
     gk_none
     l0_dev
@@ -48,7 +50,7 @@
   # last prompt line gets hidden if it would overlap with left prompt.
   typeset -g POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(
     status                  # exit code of the last command
-    command_execution_time  # duration of the last command
+    #command_execution_time  # duration of the last command
     #background_jobs         # presence of background jobs
     #direnv                  # direnv status (https://direnv.net/)
     #asdf                    # asdf version manager (https://github.com/asdf-vm/asdf)
@@ -106,7 +108,7 @@
     #timewarrior             # timewarrior tracking status (https://timewarrior.net/)
     #taskwarrior             # taskwarrior task count (https://taskwarrior.org/)
     # cpu_arch              # CPU architecture
-    #time                    # current time
+    time                    # current time
     # ip                    # ip address and bandwidth usage for a specified network interface
     # public_ip             # public IP address
     # proxy                 # system-wide http/https/ftp proxy
@@ -1672,7 +1674,21 @@
     p10k segment -f 209 -t "$SHLVL"
   }
   typeset -g POWERLEVEL9K_SHLVL_BACKGROUND="grey11"
-  typeset -g POWERLEVEL9K_SHLVL_FOREGROUND="lightskyblue1"
+  typeset -g POWERLEVEL9K_SHLVL_FOREGROUND="#AA9DAC"
+
+  function prompt_k8s_ctxt () {
+    K8S_CTXT="$(kubectl config current-context)"
+    p10k segment -f 209 -t "$K8S_CTXT"
+  }
+  typeset -g POWERLEVEL9K_K8S_CTXT_BACKGROUND="grey11"
+  typeset -g POWERLEVEL9K_K8S_CTXT_FOREGROUND="#9ee5dc"
+
+  function prompt_k8s_ns () {
+    K8S_NS="$(kubens -c)"
+    p10k segment -f 209 -t "$K8S_NS"
+  }
+  typeset -g POWERLEVEL9K_K8S_NS_BACKGROUND="grey11"
+  typeset -g POWERLEVEL9K_K8S_NS_FOREGROUND="lightskyblue1"
 
   # User-defined prompt segments may optionally provide an instant_prompt_* function. Its job
   # is to generate the prompt segment for display in instant prompt. See

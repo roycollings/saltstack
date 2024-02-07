@@ -142,13 +142,13 @@
 
   # Connect left prompt lines with these symbols. You'll probably want to use the same color
   # as POWERLEVEL9K_MULTILINE_FIRST_PROMPT_GAP_FOREGROUND below.
-#  typeset -g POWERLEVEL9K_MULTILINE_FIRST_PROMPT_PREFIX='%240F╭─'
-#  typeset -g POWERLEVEL9K_MULTILINE_NEWLINE_PROMPT_PREFIX='%240F├─'
-#  typeset -g POWERLEVEL9K_MULTILINE_LAST_PROMPT_PREFIX='%240F╰─'
-#  # Connect right prompt lines with these symbols.
-#  typeset -g POWERLEVEL9K_MULTILINE_FIRST_PROMPT_SUFFIX='%240F─╮'
-#  typeset -g POWERLEVEL9K_MULTILINE_NEWLINE_PROMPT_SUFFIX='%240F─┤'
-#  typeset -g POWERLEVEL9K_MULTILINE_LAST_PROMPT_SUFFIX='%240F─╯'
+  #typeset -g POWERLEVEL9K_MULTILINE_FIRST_PROMPT_PREFIX='%240F╭─'
+  typeset -g POWERLEVEL9K_MULTILINE_NEWLINE_PROMPT_PREFIX='%240F├─'
+  typeset -g POWERLEVEL9K_MULTILINE_LAST_PROMPT_PREFIX='%240F╰─'
+  # Connect right prompt lines with these symbols.
+  #typeset -g POWERLEVEL9K_MULTILINE_FIRST_PROMPT_SUFFIX='%240F─╮'
+  #typeset -g POWERLEVEL9K_MULTILINE_NEWLINE_PROMPT_SUFFIX='%240F─┤'
+  #typeset -g POWERLEVEL9K_MULTILINE_LAST_PROMPT_SUFFIX='%240F─╯'
 
   # Filler between left and right prompt on the first prompt line. You can set it to ' ', '·' or
   # '─'. The last two make it easier to see the alignment between left and right prompt and to
@@ -168,7 +168,7 @@
   fi
 
   # Default background color.
-  typeset -g POWERLEVEL9K_BACKGROUND=236
+  typeset -g POWERLEVEL9K_BACKGROUND=237
 
   # Separator between same-color segments on the left.
   #typeset -g POWERLEVEL9K_LEFT_SUBSEGMENT_SEPARATOR='%244F\uE0B1'
@@ -1674,7 +1674,6 @@
   function prompt_shlvl () {
     p10k segment -f 209 -t "$SHLVL"
   }
-  typeset -g POWERLEVEL9K_SHLVL_BACKGROUND="grey11"
   typeset -g POWERLEVEL9K_SHLVL_FOREGROUND="#AA9DAC"
 
   function prompt_k8s () {
@@ -1682,7 +1681,6 @@
     K8S_NS="$(kubens -c)"
     p10k segment -f 209 -t "$K8S_CTXT | $K8S_NS"
   }
-  typeset -g POWERLEVEL9K_K8S_BACKGROUND="grey11"
   typeset -g POWERLEVEL9K_K8S_FOREGROUND="lightskyblue1"
 
   # User-defined prompt segments may optionally provide an instant_prompt_* function. Its job

@@ -33,14 +33,18 @@
   # node_version
   typeset -g POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(
     shlvl
+    node_version
+    k8s_title
     k8s_context
     k8s_ns
-    k8s
+    gk_title
     gk
     gk_none
+    l0_title
     l0_dev
     l0_sbx
     l0_prod
+    bar
     dir                     # current directory
     vcs                     # git status
     newline                 # \n
@@ -1640,34 +1644,54 @@
     p10k segment -f 208 -i '⭐' -t 'hello, %n'
   }
 
+  function prompt_bar () {
+   p10k segment -f 209 -t "|"
+  }
+  typeset -g POWERLEVEL9K_BAR_FOREGROUND=246
+
+  function prompt_l0_title () {
+   p10k segment -f 209 -t "|l0"
+  }
+  typeset -g POWERLEVEL9K_L0_TITLE_FOREGROUND=246
+
+  # Layer0 profile
   function prompt_l0_dev () {
     DEV=""
-    (layer0 profile current | grep dev > /dev/null) && DEV='l0:dev'
+    (layer0 profile current | grep dev > /dev/null) && DEV='dev'
     p10k segment -f 209 -t "$DEV"
   }
+  typeset -g  POWERLEVEL9K_L0_DEV_BACKGROUND="yellow"
+  typeset -g  POWERLEVEL9K_L0_DEV_FOREGROUND="black"
+
   function prompt_l0_sbx () {
     SBX=""
-    (layer0 profile current | grep sbx > /dev/null) && SBX='l0:sbx'
+    (layer0 profile current | grep sbx > /dev/null) && SBX='sbx'
     p10k segment -f 209 -t "$SBX"
   }
+  typeset -g  POWERLEVEL9K_L0_SBX_BACKGROUND="plum1"
+  typeset -g  POWERLEVEL9K_L0_SBX_FOREGROUND="black"
+
   function prompt_l0_prod () {
     PROD=""
-    (layer0 profile current | grep prod > /dev/null) && PROD='l0:prod'
+    (layer0 profile current | grep prod > /dev/null) && PROD='%BPROD%b'
     p10k segment -f 209 -t "$PROD"
   }
-  typeset -g  POWERLEVEL9K_L0_DEV_FOREGROUND="yellow"
-  typeset -g  POWERLEVEL9K_L0_SBX_FOREGROUND="plum1"
   typeset -g  POWERLEVEL9K_L0_PROD_BACKGROUND="red1"
-  typeset -g  POWERLEVEL9K_L0_PROD_FOREGROUND="grey3"
+  typeset -g  POWERLEVEL9K_L0_PROD_FOREGROUND="black"
+
+  function prompt_gk_title () {
+   p10k segment -f 209 -t "|gk"
+  }
+  typeset -g POWERLEVEL9K_GK_TITLE_FOREGROUND=246
 
   function prompt_gk () {
     GK=""
-    [ "$GK_PROFILE" ] && GK="gk:$GK_PROFILE"
+    [ "$GK_PROFILE" ] && GK="$GK_PROFILE"
     p10k segment -f 209 -t "$GK"
   }
   function prompt_gk_none () {
     GK_NONE=""
-    [ "$GK_PROFILE" ] || GK_NONE="gk:none"
+    [ "$GK_PROFILE" ] || GK_NONE="none"
     p10k segment -f 209 -t "$GK_NONE"
   }
   typeset -g POWERLEVEL9K_GK_FOREGROUND="white"
@@ -1677,18 +1701,32 @@
     p10k segment -f 209 -t "$SHLVL"
   }
   typeset -g POWERLEVEL9K_SHLVL_FOREGROUND="#AA9DAC"
+  
+  function prompt_k8s_title () {
+   p10k segment -f 209 -t "|k8s"
+  }
+  typeset -g POWERLEVEL9K_K8S_TITLE_FOREGROUND=246
 
   function prompt_k8s_context () {
     K8S_CTXT="$(kubectl config current-context)"
-    p10k segment -f 209 -t "ctxt:$K8S_CTXT"
+    p10k segment -f 209 -t "$K8S_CTXT"
   }
   typeset -g POWERLEVEL9K_K8S_CONTEXT_FOREGROUND=044
 
   function prompt_k8s_ns () {
     K8S_NS="$(kubens -c)"
-    p10k segment -f 209 -t "ns:$K8S_NS"
+    p10k segment -f 209 -t "$K8S_NS"
   }
   typeset -g POWERLEVEL9K_K8S_NS_FOREGROUND=042
+
+  # Too slow!
+#  function prompt_space () {
+#    SPACE="$(layer0 space list --mine 2>/dev/null | grep "Name" | awk '{print $NF}')"
+#    if [ "$SPACE" != "" ]
+#    then
+#      p10k segment -f 209 -t "$SPACE"
+#    fi
+#  }
 
 
   # User-defined prompt segments may optionally provide an instant_prompt_* function. Its job

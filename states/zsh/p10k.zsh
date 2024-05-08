@@ -30,18 +30,14 @@
   [[ $ZSH_VERSION == (5.<1->*|<6->.*) ]] || return
 
   # The list of segments shown on the left. Fill it with the most important segments.
-  # node_version
   typeset -g POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(
     shlvl
     direnv
     node_version
-    k8s_title
-    k8s_context
-    k8s_ns
-    gk_title
+    kubecontext
+    #gk_title
     gk
-    gk_none
-    l0_title
+    #gk_none
     l0_dev
     l0_sbx
     l0_prod
@@ -238,7 +234,8 @@
 
   ##################################[ dir: current directory ]##################################
   # Default current directory color.
-  typeset -g POWERLEVEL9K_DIR_FOREGROUND=31
+  #typeset -g POWERLEVEL9K_DIR_FOREGROUND=31
+  typeset -g POWERLEVEL9K_DIR_FOREGROUND=Grey84
   # If directory is too long, shorten some of its segments to the shortest possible unique
   # prefix. The shortened directory can be tab-completed to the original.
   typeset -g POWERLEVEL9K_SHORTEN_STRATEGY=truncate_to_unique
@@ -249,7 +246,8 @@
   typeset -g POWERLEVEL9K_DIR_SHORTENED_FOREGROUND=103
   # Color of the anchor directory segments. Anchor segments are never shortened. The first
   # segment is always an anchor.
-  typeset -g POWERLEVEL9K_DIR_ANCHOR_FOREGROUND=39
+  #typeset -g POWERLEVEL9K_DIR_ANCHOR_FOREGROUND=39
+  typeset -g POWERLEVEL9K_DIR_ANCHOR_FOREGROUND=white
   # Display anchor directory segments in bold.
   typeset -g POWERLEVEL9K_DIR_ANCHOR_BOLD=false
   # Don't shorten directories that contain any of these files. They are anchors.
@@ -1288,7 +1286,7 @@
   #############[ kubecontext: current kubernetes context (https://kubernetes.io/) ]#############
   # Show kubecontext only when the command you are typing invokes one of these tools.
   # Tip: Remove the next line to always show kubecontext.
-  typeset -g POWERLEVEL9K_KUBECONTEXT_SHOW_ON_COMMAND='kubectl|helm|kubens|kubectx|oc|istioctl|kogito|k9s|helmfile|flux|fluxctl|stern|kubeseal|skaffold|kubent|kubecolor|cmctl|sparkctl'
+  #typeset -g POWERLEVEL9K_KUBECONTEXT_SHOW_ON_COMMAND='kubectl|helm|kubens|kubectx|oc|istioctl|kogito|k9s|helmfile|flux|fluxctl|stern|kubeseal|skaffold|kubent|kubecolor|cmctl|sparkctl'
 
   # Kubernetes context classes for the purpose of using different colors, icons and expansions with
   # different contexts.
@@ -1317,10 +1315,12 @@
   #   typeset -g POWERLEVEL9K_KUBECONTEXT_TEST_VISUAL_IDENTIFIER_EXPANSION='⭐'
   #   typeset -g POWERLEVEL9K_KUBECONTEXT_TEST_CONTENT_EXPANSION='> ${P9K_CONTENT} <'
   typeset -g POWERLEVEL9K_KUBECONTEXT_CLASSES=(
-      # '*prod*'  PROD    # These values are examples that are unlikely
+       '*prod*'  PROD    # These values are examples that are unlikely
       # '*test*'  TEST    # to match your needs. Customize them as needed.
       '*'       DEFAULT)
-  typeset -g POWERLEVEL9K_KUBECONTEXT_DEFAULT_FOREGROUND=134
+  typeset -g POWERLEVEL9K_KUBECONTEXT_DEFAULT_FOREGROUND=39
+  typeset -g POWERLEVEL9K_KUBECONTEXT_PROD_BACKGROUND=red
+  typeset -g POWERLEVEL9K_KUBECONTEXT_PROD_FOREGROUND=black
   # typeset -g POWERLEVEL9K_KUBECONTEXT_DEFAULT_VISUAL_IDENTIFIER_EXPANSION='⭐'
 
   # Use POWERLEVEL9K_KUBECONTEXT_CONTENT_EXPANSION to specify the content displayed by kubecontext
@@ -1375,7 +1375,7 @@
   #[ aws: aws profile (https://docs.aws.amazon.com/cli/latest/userguide/cli-configure-profiles.html) ]#
   # Show aws only when the command you are typing invokes one of these tools.
   # Tip: Remove the next line to always show aws.
-  typeset -g POWERLEVEL9K_AWS_SHOW_ON_COMMAND='aws|awless|terraform|pulumi|terragrunt'
+  #typeset -g POWERLEVEL9K_AWS_SHOW_ON_COMMAND='aws|awless|terraform|pulumi|terragrunt'
 
   # POWERLEVEL9K_AWS_CLASSES is an array with even number of elements. The first element
   # in each pair defines a pattern against which the current AWS profile gets matched.
@@ -1650,42 +1650,25 @@
   }
   typeset -g POWERLEVEL9K_BAR_FOREGROUND=246
 
-  function prompt_l0_title () {
-   p10k segment -f 209 -t "|l0"
-  }
-  typeset -g POWERLEVEL9K_L0_TITLE_FOREGROUND=246
-
   # Layer0 profile
   function prompt_l0_dev () {
-    DEV=""
-    (layer0 profile current | grep dev > /dev/null) && DEV='dev'
+    (layer0 profile current | grep dev > /dev/null) && DEV='l0:dev' || DEV=""
     p10k segment -f 209 -t "$DEV"
   }
-  typeset -g  POWERLEVEL9K_L0_DEV_BACKGROUND="yellow"
-  typeset -g  POWERLEVEL9K_L0_DEV_FOREGROUND="black"
+  typeset -g  POWERLEVEL9K_L0_DEV_FOREGROUND="yellow"
 
   function prompt_l0_sbx () {
-    SBX=""
-    (layer0 profile current | grep sbx > /dev/null) && SBX='sbx'
+    (layer0 profile current | grep sbx > /dev/null) && SBX='l0:sbx' || SBX=""
     p10k segment -f 209 -t "$SBX"
   }
-  typeset -g  POWERLEVEL9K_L0_SBX_BACKGROUND="plum1"
-  typeset -g  POWERLEVEL9K_L0_SBX_FOREGROUND="black"
+  typeset -g  POWERLEVEL9K_L0_SBX_FOREGROUND="plum1"
 
   function prompt_l0_prod () {
-    PROD=""
-    (layer0 profile current | grep prod > /dev/null) && PROD='%BPROD%b'
+    (layer0 profile current | grep prod > /dev/null) && PROD='l0:%BPROD%b' || PROD=""
     p10k segment -f 209 -t "$PROD"
   }
   typeset -g  POWERLEVEL9K_L0_PROD_BACKGROUND="red1"
   typeset -g  POWERLEVEL9K_L0_PROD_FOREGROUND="black"
-
-  function prompt_direnv () {
-    (direnv status | grep Loaded > /dev/null) && DIRENV="direnv" || DIRENV=""
-    p10k segment -f 209 -t "$DIRENV"
-  }
-  typeset -g POWERLEVEL9K_DIRENV_BACKGROUND="grey"
-  typeset -g POWERLEVEL9K_DIRENV_FOREGROUND="black"
 
   function prompt_gk_title () {
    p10k segment -f 209 -t "|gk"
@@ -1694,39 +1677,16 @@
 
   function prompt_gk () {
     GK=""
-    [ "$GK_PROFILE" ] && GK="$GK_PROFILE"
+    [ "$GK_PROFILE" ] && GK="gk:$GK_PROFILE" || GK=""
     p10k segment -f 209 -t "$GK"
   }
-  function prompt_gk_none () {
-    GK_NONE=""
-    [ "$GK_PROFILE" ] || GK_NONE="none"
-    p10k segment -f 209 -t "$GK_NONE"
-  }
-  typeset -g POWERLEVEL9K_GK_FOREGROUND="white"
-  typeset -g POWERLEVEL9K_GK_NONE_FOREGROUND="grey37"
+  typeset -g POWERLEVEL9K_GK_FOREGROUND="orange1"
 
   function prompt_shlvl () {
     p10k segment -f 209 -t "$SHLVL"
   }
   typeset -g POWERLEVEL9K_SHLVL_FOREGROUND="#AA9DAC"
   
-  function prompt_k8s_title () {
-   p10k segment -f 209 -t "|k8s"
-  }
-  typeset -g POWERLEVEL9K_K8S_TITLE_FOREGROUND=246
-
-  function prompt_k8s_context () {
-    K8S_CTXT="$(kubectl config current-context)"
-    p10k segment -f 209 -t "$K8S_CTXT"
-  }
-  typeset -g POWERLEVEL9K_K8S_CONTEXT_FOREGROUND=044
-
-  function prompt_k8s_ns () {
-    K8S_NS="$(kubens -c)"
-    p10k segment -f 209 -t "$K8S_NS"
-  }
-  typeset -g POWERLEVEL9K_K8S_NS_FOREGROUND=042
-
   # Too slow!
 #  function prompt_space () {
 #    SPACE="$(layer0 space list --mine 2>/dev/null | grep "Name" | awk '{print $NF}')"

@@ -33,6 +33,7 @@
   # node_version
   typeset -g POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(
     shlvl
+    direnv
     node_version
     k8s_title
     k8s_context
@@ -1678,6 +1679,13 @@
   }
   typeset -g  POWERLEVEL9K_L0_PROD_BACKGROUND="red1"
   typeset -g  POWERLEVEL9K_L0_PROD_FOREGROUND="black"
+
+  function prompt_direnv () {
+    (direnv status | grep Loaded > /dev/null) && DIRENV="direnv" || DIRENV=""
+    p10k segment -f 209 -t "$DIRENV"
+  }
+  typeset -g POWERLEVEL9K_DIRENV_BACKGROUND="grey"
+  typeset -g POWERLEVEL9K_DIRENV_FOREGROUND="black"
 
   function prompt_gk_title () {
    p10k segment -f 209 -t "|gk"

@@ -1655,19 +1655,19 @@
 
   # Layer0 profile
   function prompt_l0_dev () {
-    (layer0 profile current | grep dev > /dev/null) && DEV='l0:dev' || DEV=""
+    (layer0 profile current 2>/dev/null | grep dev > /dev/null) && DEV='l0:dev' || DEV=""
     p10k segment -f 209 -t "$DEV"
   }
   typeset -g  POWERLEVEL9K_L0_DEV_FOREGROUND="yellow"
 
   function prompt_l0_sbx () {
-    (layer0 profile current | grep sbx > /dev/null) && SBX='l0:sbx' || SBX=""
+    (layer0 profile current 2>/dev/null | grep sbx > /dev/null) && SBX='l0:sbx' || SBX=""
     p10k segment -f 209 -t "$SBX"
   }
   typeset -g  POWERLEVEL9K_L0_SBX_FOREGROUND="plum1"
 
   function prompt_l0_prod () {
-    (layer0 profile current | grep prod > /dev/null) && PROD='l0:%BPROD%b' || PROD=""
+    (layer0 profile current 2>/dev/null | grep prod > /dev/null) && PROD='l0:%BPROD%b' || PROD=""
     p10k segment -f 209 -t "$PROD"
   }
   typeset -g  POWERLEVEL9K_L0_PROD_BACKGROUND="red1"
